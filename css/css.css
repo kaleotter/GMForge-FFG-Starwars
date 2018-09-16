@@ -1,0 +1,569 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19-Aug-2018, 12:57:27
+    Author     : clini
+*/
+
+
+/*font includes */
+
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+@font-face
+{
+    font-family:Eote Dice;
+    src: url(/content/EotE_Symbol-Regular_v1.otf);
+
+}
+
+/* sheet bg */
+
+.sheetbg
+{
+
+    width: 100%;
+
+    background-image:url(/images/bg/blanksheet.jpg);
+    background-size: 100% 100%;
+    background-repeat:repeat-y;
+
+}
+
+/* for the charsheet top */
+
+.charinfobox
+{
+    min-height: 100px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom:10px;
+    margin-bottom:5px;
+    overflow: hidden;
+    border-radius: 0px 0px 20px 0px;
+    background:rgba(128,128,128,0.5);
+
+}
+
+.bioinfo
+{
+    width: 80%;
+}
+
+.forcertg
+{
+    height:90px;
+    width:90px;
+    background-image:url(/images/svg/charbox.svg);
+    background-size:100% 100%;
+}
+
+.forcertg input
+{
+    position: relative;
+    left: 12.125px;
+    top: 3px;
+    height:65px;
+    width:65px;
+
+    border: none;
+    border-radius:50%;
+    background:rgba(255,255,255,0);
+
+    font-family: 'abel';
+    font-size:22pt;
+    text-align:center;
+}
+
+.bioline
+{
+    min-height: 15pt;
+    max-height: 21pt;
+    padding-bottom: 3px;
+}
+
+.bioline .biolabel
+{
+    min-width:25%;
+    text-transform:uppercase;
+}
+
+.bioline p
+{
+    padding-right:5px;
+    min-height:14pt;
+
+
+    font-family:"abel";
+    text-align:left;
+    font-size: 14pt;
+}
+
+.bioline input
+{
+
+    min-width:70%;
+
+    font-family:"abel";
+    font-size: 11pt;
+
+}
+
+/* derived attributes section */
+
+
+
+.derivedbg
+{
+    background-image:url(/images/svg/charbg.svg);
+    background-size:100% 100%;
+    align-items:center;
+}
+
+/*single attributes */
+
+.derivedsingle
+{
+    height: 90px;
+    width: 150px;
+    background-image:url(/images/svg/derived-single.svg);
+    background-size:100% 100%;
+
+    align-items:center;
+}
+
+.derivedsingle .title
+{
+    width: 100%;
+
+    position: relative;
+    top: 5px;
+
+
+    font-family:'abel';
+    font-size:10pt;
+    color:white;
+    text-align:center;
+    text-transform: uppercase;
+}
+
+.derivedsingle input
+{
+    position: relative;
+    top: 3px;
+
+    height: 50px;
+    width:80%;
+
+    font-family:'abel';
+    font-size:28px;
+    text-align:center;
+
+    border:none;
+
+    background-color:rgba(255,255,255,0)
+}
+
+/*dual derived attributes*/
+.deriveddbl
+{
+    height: 100px;
+    width:150px;
+
+    align-items: center;
+
+    background-image:url(/images/svg/derived-double.svg);
+    background-size: 100% 100%;
+}
+
+.deriveddbl .title
+{
+    width: 100%;
+
+    position: relative;
+    top: 5px;
+
+
+    font-family:'abel';
+    font-size:10pt;
+    color:white;
+    text-align:center;
+    text-transform: uppercase;
+
+}
+
+.deriveddbl .title .right
+{
+    width:75px;
+
+    color:white;
+
+}
+
+.deriveddbl .title .left
+{
+    width:75px;
+
+    color:black;
+}
+
+.deriveddbl input 
+{
+    width: 60px;
+
+    font-family:'abel';
+    font-size:22pt;
+
+    text-align:center;
+
+    border:none;
+
+    background-color:rgba(255,255,255,0)
+}
+
+.deriveddbl .inputcontainer
+{
+    margin-top:5px;
+    Margin-bottom:5px;
+    position:relative;
+    width: 120px;
+}
+
+
+.deriveddbl .lower
+{
+    width:150px
+}
+
+/* characteristics section */
+
+
+.charbg
+{
+    width:100%;
+    height:80px;
+
+    margin-bottom: 20px;
+
+
+    background-image:url(/images/svg/charbg.svg);
+}
+
+.rtgbg
+{
+    height:90px;
+    width:90px;
+    background-image:url(/images/svg/charbox.svg);
+    background-size:100% 100%;    
+}
+
+.rtglabel
+{
+    position:relative;
+
+    bottom: -8px;
+
+    width: 90px;
+
+
+    color:white;
+    font-family: 'abel';
+    font-size:9.5pt;
+
+    text-transform:uppercase;
+}
+
+.rtgbg input
+{
+    position: relative;
+    left: 11.125px;
+    top: 3px;
+    height:65px;
+    width:65px;
+
+    border: none;
+    border-radius:50%;
+    background:rgba(255,255,255,0);
+
+    font-family: 'abel';
+    font-size:22pt;
+    text-align:center;    
+}
+
+/* character sheet tabs */
+
+.cstab
+{
+    background-image:url(/images/svg/tabbg-u.svg);   
+    background-size:100% 100%;
+
+    height: 40px;
+    width: 100px;
+
+    font-family:'abel';
+    font-size:10pt;
+    color:white;
+
+    text-transform:uppercase;
+}
+
+/*--- skills--- */
+
+
+
+/* column  formatting */
+.skilltab .leftcol
+{
+    border-radius: 20px 10px 10px 20px;
+
+    background-color:rgba(128,128,128,0.5);
+
+    width:50%;
+
+    margin:3px;
+    padding:5px;
+    padding-bottom:15px;
+
+}
+
+.skilltab .rightcol
+{
+    border-radius: 10px 20px 20px 10px;
+
+    background-color:rgba(128,128,128,0.5);
+
+    width:50%;
+
+    margin:3px;
+    padding:5px;
+
+}
+
+.skilltab .skilltable
+{
+    border:1px black solid;
+}
+
+/* table formatting */
+.skilltab .tableheading
+{
+    font-family:'abel';
+    font-size:12px;
+    color:black;
+
+    text-transform:uppercase;
+}
+
+.tableheading .namecol
+{
+    min-width:45%;
+    
+    text-align: center;
+}
+
+.tableheading .careercol
+{
+    width:12%;
+    
+    text-align:center;
+}
+
+.tableheading .rankscol
+{
+    width:100%;
+    
+    text-align:center;
+    
+}
+
+
+
+.skilltab select
+{
+    font-family:'abel';
+    font-size:10pt;
+    height: 22px;
+    background-color:rgba(255,255,255,0.5);
+}
+
+.skilltab p
+{
+    font-family: 'abel';
+    font-size:10pt;
+    color:black;
+
+    text-align: left;
+}
+
+.skilltab .skillrow
+{
+    /* height: 23px; */
+    border-bottom:1px dotted black;
+}
+
+.skillrow .skillname
+{
+    width:45%;
+    border-right: dashed 1px black;
+    padding-left:2px;
+    padding-top:2px;
+
+}
+
+.skillrow .careerbox
+{
+    width:12%;
+    padding-left:3px;
+    padding-right: 3px;
+    border-right:1px dashed black;
+}
+
+.skillrow .skillnameinput
+{
+    width:60%;
+    font-family:"abel";
+    font-size:11pt;
+}
+
+
+
+/* ---diceroller dialog--- */
+
+.roller userinput
+{
+    width:50px;
+    font-family:'abel';
+    font-size:16pt;
+    border:none;
+
+
+}
+
+.roller p
+{
+    font-family:'abel';
+    font-size: 16pt;
+    font-weight:bold;
+}
+
+.roller .prodieinput
+{
+    background:url(/images/svg/pro-fillable.svg);
+    background-size: 100% 100%;
+
+    height:50px;
+    width:50px; 
+    margin:4px;
+
+}
+
+.roller .abdieinput
+{
+    background:url(/images/svg/ab-fillable.svg);
+    background-size: 100% 100%;
+
+    height:50px;
+    width:50px; 
+    margin:4px;
+
+
+}
+
+.roller .boostinput
+{
+    background:url(/images/svg/boost-fillable.svg);
+    background-size: 100% 100%;
+
+    height:50px;
+    width:50px;
+    margin:4px;
+    padding: 2px;
+}
+
+.roller .challengeinput
+{
+    background:url(/images/svg/chal-fillable.svg);
+    background-size: 100% 100%;
+
+    height:50px;
+    width:50px;
+    margin:4px;
+    padding: 2px;
+}
+
+.roller .diinput
+{
+        background:url(/images/svg/di-fillable.svg);
+    background-size: 100% 100%;
+    
+    height:50px;
+    width:50px;
+    margin:4px;
+    padding: 2px;
+}
+
+.roller .sbinput
+{
+        background:url(/images/svg/sb-fillable.svg);
+    background-size: 100% 100%;
+    
+    height:50px;
+    width:50px;
+    margin:4px;
+    padding: 2px;
+}
+
+/* ---general helper elements--- */
+
+.sheetbutton
+{
+    margin: 2px;
+
+    background:#33492a;
+
+    border: 1.5px #33492a outset;
+
+}
+
+.sheetbutton:active
+{
+    background:#516148;
+
+    border: 1.5px #516148 inset;
+}
+.abdie
+{
+    background-image:url(/images/svg/abil.svg);
+    background-size: 100% 100%;
+
+    height: 22px;
+    width: 22px;
+
+    align-content:center;
+    align-items: center;
+
+    text-align:center;
+
+}
+
+.prodie
+{
+    background-image:url(/images/svg/Pro.svg);
+    background-size: 100% 100%;
+
+    height: 22px;
+    width: 22px;
+
+    align-content: stretch;
+    align-items: center;
+
+    text-align: center;
+
+}
+
+.eotedice
+{font-family:'Eote Dice'}

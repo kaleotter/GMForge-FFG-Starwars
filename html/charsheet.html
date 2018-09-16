@@ -1,0 +1,157 @@
+
+<div class='sheetbg'>
+
+    <div class="charinfobox flexrow">
+
+        <div class='flexcolumn bioinfo'>
+            <div class="bioline flexrow">
+                <div class='flexcolumn biolabel'>
+                    <p>Name</p>
+                </div>
+                <input target="info.name">
+
+
+            </div>
+            <div class="bioline flexrow">
+                <div class='flexcolumn biolabel'>
+                    <p>Species</p>
+                </div>
+                <input target="info.species">
+
+
+            </div>
+
+            <div class="bioline flexrow">
+                <div class='flexcolumn biolabel'>
+                    <p>Career:</p>
+                </div>
+                <input target="info.career">
+
+            </div>
+
+            <div class="bioline flexrow">
+                <div class='flexcolumn biolabel'>
+                    <p>specializations:</p>
+                </div>
+                <input target="info.specs">
+
+            </div>
+        </div>
+
+        <div class='flexcolumn forcertg'>
+            <input target='stats.frtg' class='attrinput'>
+            <div class='rtglabel'>Force Rating</div>
+        </div>
+    </div>
+
+    <div class='flexrow flexaround derivedbg'>
+
+        <div class='flexcolumn derivedsingle'>
+            <div class='title'>soak value
+            </div>
+            <input target='counters.soak'>
+        </div>
+
+        <div class='flexcolumn deriveddbl'>
+            <div class='title'>wounds</div>
+            <div class='flexrow inputcontainer'>
+                <input target='counters.wounds' >
+                <input target='counters.wounds.max' >
+            </div>
+            <div class='flexrow lowercontainer title'>
+                <div class=' left'>current</div>
+                <div class ='right'>threshold</div>
+
+            </div>
+        </div>
+
+        <div class='flexcolumn deriveddbl'>
+            <div class='title'>strain</div>
+            <div class='flexrow inputcontainer'>
+                <input target='counters.strain' >
+                <input target='counters.strain.max' >
+            </div>
+            <div class='flexrow lowercontainer title'>
+                <div class=' left'>current</div>
+                <div class ='right'>threshold</div>
+
+            </div>
+
+        </div>
+
+        <div class='flexcolumn deriveddbl'>
+            <div class='title'>defence</div>
+            <div class='flexrow inputcontainer'>
+                <input target='counters.mdef' >
+                <input target='counters.rdef' >
+            </div>
+            <div class='flexrow lowercontainer title'>
+                <div class=' left'>melee</div>
+                <div class ='right'>ranged</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class='flexrow flexaround charbg'>
+
+        <div class='flexcolumn rtgbg'>
+            <input target='stats.br'>
+            <div class='rtglabel'>
+                brawn
+            </div>
+        </div>
+
+        <div class='flexcolumn rtgbg'>
+            <input target='stats.ag'>
+            <div class='rtglabel'>
+                agility
+            </div>
+        </div>
+        <div class='flexcolumn rtgbg'>
+            <input target='stats.int'>
+            <div class='rtglabel'>
+                intellect
+            </div>
+        </div>
+
+        <div class='flexcolumn rtgbg'>
+            <input target='stats.cun'>
+            <div class='rtglabel'>
+                cunning
+            </div>
+        </div>
+        <div class='flexcolumn rtgbg'>
+            <input target='stats.wp'>
+            <div class='rtglabel'>
+                willpower
+            </div>
+        </div>
+        <div class='flexcolumn rtgbg'>
+            <input target='stats.pre'>
+            <div class='rtglabel'>
+                presence
+            </div>
+        </div>
+    </div>
+    <tabs class="flexrow flexaround fit-x size4" tab-category='main-tab' tab-selected="alttext flexmiddle lrpadding smooth" tab-selected-style="height: 40px; width:100px; background-image:url(images/svg/tabbg-s.svg); font-family:'abel'; font-size:12pt; text-transform:uppercase ";'>
+        <tab class='flexmiddle link lrpadding cstab' primary="true">skills</tab>
+        <tab class='flexmiddle link lrpadding cstab'>talents</tab>
+        <tab class='flexmiddle link lrpadding cstab'>equipment</tab>
+        <tab class='flexmiddle link lrpadding cstab'>powers</tab>
+        <tab class='flexmiddle link lrpadding cstab'>bio</tab>
+    </tabs>
+
+    <div main-tab='skills' class='flexrow skilltab'>
+        <div class='flexcolumn leftcol'>
+            <ui name="SKILLS_GENERAL_UI"/>
+        </div>
+
+        <div class='flexcolumn rightcol'>
+            <ui name="SKILLS_COMBAT_UI"/>
+            <ui name="SKILLS_KNOW_UI"/>
+            <ui name="SKILLS_CUST_UI"/>
+        </div>
+
+
+    </div>

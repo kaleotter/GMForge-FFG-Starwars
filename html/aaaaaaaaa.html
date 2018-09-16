@@ -1,0 +1,896 @@
+<div class='flexcolumn fit-xy lpadding' style='font-family : "ColumbusMTStd-Semibold"'>
+    <input class='size7 line fit-x middle' style='font-family : "Celestia Antiqua Std Bold"; border-color : transparent;' target='info.name'/>
+
+    <list class='flexrow fit-x flexbetween' target='stats'>
+    <div class='flexcolumn outline smooth' style='background : radial-gradient(rgb(77, 42, 22), rgb(42, 21, 14))'>
+        <div class='outlinebottom inactive flexmiddle subtitle lrpadding destroy' cond='eval{(@exhaustion > (@%path%/10)f)}' title='exhausted'>
+            <input class='line middle' target='stats.%index%' style="width : 30px;"/>
+            (<input title='eval{@c.counters.nn%index%.name}' class='line middle subtitle' target="counters.nn%index%" style="width : 20px;"/>)
+        </div>
+        <div class='outlinebottom inactive flexmiddle subtitle lrpadding' cond='eval{(@exhaustion <= (@%path%/10)f)}'>
+            <input class='line middle' target='stats.%index%' style="width : 30px;"/>
+            (<input title='eval{@c.counters.nn%index%.name}' class='line middle subtitle' target="counters.nn%index%" style="width : 20px;"/>)
+        </div>
+        <div class='white outlinebottom bold flexmiddle size3 link' title='roll'>
+            eval{@%path%}
+            <click>
+                <prompt align="bottom">
+                    <b>Modifier</b>
+                    <var threshold="@%index%"/>
+                    <userinput class='middle' varname="modifier"/>
+                </prompt>
+                <chat roll="d100 - @modifier" flavor='"traverse{stats.%index%.name}"+"("+@:sign(@modifier)+")"' roll-ui='ui_statTest'/>
+            </click>
+        </div>
+        <div class='flexrow flexmiddle lrmargin'>
+            <input type="checkbox" style='width : 10px; height : 10px;' target='stats.%index%' mod='Rank' check='5' uncheck='0' isChecked='eval{@%path%.modifiers.Rank>0}'/>
+            <input type="checkbox" style='width : 10px; height : 10px;' target='stats.%index%' mod='Rank' check='10' uncheck='5' isChecked='eval{@%path%.modifiers.Rank>5}'/>
+            <input type="checkbox" style='width : 10px; height : 10px;' target='stats.%index%' mod='Rank' check='15' uncheck='10' isChecked='eval{@%path%.modifiers.Rank>10}'/>
+            <input type="checkbox" style='width : 10px; height : 10px;' target='stats.%index%' mod='Rank' check='20' uncheck='15' isChecked='eval{@%path%.modifiers.Rank>15}'/>
+            <input type="checkbox" style='width : 10px; height : 10px;' target='stats.%index%' mod='Rank' check='25' uncheck='20' isChecked='eval{@%path%.modifiers.Rank>20}'/>
+        </div>
+        <div class='bold flexmiddle' style='color : rgb(235,225,210)' title='eval{@%path%.name}'>
+            %index%
+        </div>
+    </div>
+    </list>
+    <div class='padding'></div>
+    <div class='flexrow flex'>
+        <div class='flexcolumn flex lrmargin' style='min-height:100%;'>
+            <div style='min-width : 200px; height : 200px; position : relative;' class='flexcolumn outline smooth white'>
+                <ui name='ui_image'/>
+                <ui name='ui_token' class='white outline smooth hover2' style='position : absolute; right : 0; bottom : 0; width : 30px; height : 30px;'/>
+            </div>
+
+            <div class='flexrow flexbetween lrpadding'>
+                <div class='flexbetween'>
+                    <b>Corruption</b>
+                    <input target="counters.corruption" class='line lrmargin middle' style='width : 25px;'/>
+                </div>
+                <div class='flexbetween'>
+                    <b>Insanity</b>
+                    <input target="counters.insanity" class='line lrmargin middle' style='width : 25px;'/>
+                </div>
+            </div>
+
+            <div class='spadding'></div>
+
+            <div class='flexrow flexbetween'>
+                <b> Wounds eval{(@wounds < 0)?("(Critical)"):((@wounds < @c.counters.wounds.max)?(((@c.counters.wounds.max - @wounds) <= (#:T*2))?("(Light)"):("(Heavy)")):(""))} </b> 
+                <text>
+                <input target="counters.wounds" style='width : 20px; border-color:transparent;' class='line middle'/> / 
+                <input target="counters.wounds" field="max" style='width : 20px; border-color:transparent;' class='line middle'/> 
+                </text>
+            </div>
+            <loop class='flexrow flexbetween flexwrap' count="@c.counters.wounds.max">
+                <div class='flex flexcolumn'>
+                    <div cond="eval{%index% < @wounds && (@c.counters.wounds.max - @wounds) <= (#:T*2)}" class='spadding flex outline smooth' style='background : rgb(45, 136, 45);'></div>
+                    <div cond="eval{%index% < @wounds && (@c.counters.wounds.max - @wounds) > (#:T*2)}" class='spadding flex outline smooth' style='background : rgb(170, 110, 57);'></div>
+                    <div cond="eval{%index% < @wounds*-1 && @wounds < 0}" class='spadding flex outline smooth' style='background : rgb(170, 57, 57);'></div>
+                    <div cond="eval{%index% >= ((@wounds)_0 - (@wounds)|0)}" class='spadding flex outline smooth'></div>
+                </div>
+            </loop>
+
+            <div class='spadding'></div>
+
+            <div class='flexrow flexbetween'>
+                <b> Exhaustion eval{(@exhaustion > (#:WP + #:T))?("(Pass Out)"):("")} </b> 
+                <text>
+                <input target="counters.exhaustion" style='width : 20px; border-color:transparent;' class='line middle'/> / 
+                <input target="counters.exhaustion" field="max" style='width : 20px; border-color:transparent;' class='line middle'/> 
+                </text>
+            </div>
+            <loop class='flexrow flexbetween flexwrap' count="@c.counters.exhaustion.max">
+                <div class='flex flexcolumn'>
+                    <div cond="eval{%index% < @exhaustion && %index% < (#:WP + #:T)}" class='outline smooth flex spadding' style='background : rgb(200, 100, 10)'></div>
+                    <div cond="eval{%index% < @exhaustion && %index% >= (#:WP + #:T)}" class='outline smooth flex spadding' style='background : rgb(100, 50, 10)'></div>
+                    <div cond="eval{%index% >= @exhaustion}" class='outline smooth flex spadding'></div>
+                </div>
+            </loop>
+
+            <div class='spadding'></div>
+
+            <div class='flexrow flexbetween'>
+                <b> Fate </b> 
+                <text>
+                <input target="counters.fate" style='width : 20px; border-color:transparent;' class='line middle'/> / 
+                <input target="counters.fate" field="max" style='width : 20px; border-color:transparent;' class='line middle'/> 
+                </text>
+            </div>
+            <loop class='flexrow flexbetween flexwrap' count="@c.counters.fate.max">
+                <div class='flex flexcolumn'>
+                    <div cond="eval{%index% < @fate}" class='outline smooth flex spadding' style='background : rgb(136, 124, 175);'></div>
+                    <div cond="eval{%index% >= @fate}" class='outline smooth flex spadding'></div>
+                </div>
+            </loop>
+
+            <div class='padding'></div>
+
+            <div class='flexcolumn flex'>
+                <div class='flexrow'>
+                    <div class='flexcolumn flexaround outline smooth inactive subtitle' style='position : relative; background-image : url("/content/outline.png"); background-size : contain; background-position : center; background-repeat : no-repeat; width : 150px; height : 150px;'>
+                        <div class='flexrow flexaround'>
+                            <div class='flexcolumn flexmiddle white outline smooth spadding'>
+                                <b>Head</b>
+                                <div class='flexrow'>
+                                    <input class='line middle' style='width : 20px' target="counters.armorH"/>(eval{#:TB + @daemonic + @armorH})
+                                </div>
+                            </div>
+                        </div>
+                        <div class='flexrow flexaround'>
+                            <div class='flexcolumn flexmiddle white outline smooth spadding'>
+                                <b>R. Arm</b>
+                                <div class='flexrow'>
+                                    <input class='line middle' style='width : 20px'  target="counters.armorAR"/>(eval{#:TB + @daemonic + @armorAR})
+                                </div>
+                            </div>
+                            <div class='flexcolumn flexmiddle white outline smooth spadding'>
+                                <b>Body</b>
+                                <div class='flexrow'>
+                                    <input class='line middle' style='width : 20px'  target="counters.armorB"/>(eval{#:TB + @daemonic + @armorB})
+                                </div>
+                            </div>
+                            <div class='flexcolumn flexmiddle white outline smooth spadding'>
+                                <b>L. Arm</b>
+                                <div class='flexrow'>
+                                    <input class='line middle' style='width : 20px'  target="counters.armorAL"/>(eval{#:TB + @daemonic + @armorAL})
+                                </div>
+                            </div>
+                        </div>
+                        <div class='flexrow flexaround'>
+                            <div class='flexcolumn flexmiddle white outline smooth spadding'>
+                                <b>R. Leg</b>
+                                <div class='flexrow'>
+                                    <input class='line middle' style='width : 20px'  target="counters.armorLR"/>(eval{#:TB + @daemonic + @armorRL})
+                                </div>
+                            </div>
+                            <div class='flexcolumn flexmiddle white outline smooth spadding' target="counters.armorLR">
+                                <b>L. Leg</b>
+                                <div class='flexrow'>
+                                    <input class='line middle' style='width : 20px'  target="counters.armorLL"/>(eval{#:TB + @daemonic + @armorLL})
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='flexcolumn flexbetween'>
+                        <div class='flexcolumn flexmiddle'>  
+                            <b class='subtitle flexmiddle' style='font-family : "Celestia Antiqua Std Bold"'>Size (eval{@:sign(@c.info.size)})</b>
+                            <select class='inactive middle smooth subtitle lrmargin' target='info.size'>
+                                <option value=-3>Mini</option>
+                                <option value=-2>Puny</option>
+                                <option value=-1>Scrawny</option>
+                                <option value=0>Average</option>
+                                <option value=1>Hulking</option>
+                                <option value=2>Enormous</option>
+                                <option value=3>Massive</option>
+                                <option value=4>Immense</option>
+                                <option value=5>Monumental</option>
+                                <option value=6>Titanic</option>
+                            </select>
+                        </div>
+                        <div class='flexcolumn flexmiddle'>  
+                            <b class='subtitle flexmiddle' style='font-family : "Celestia Antiqua Std Bold"'>Daemonic</b>
+                            <div class='flexrow flexmiddle destroy' title='Daemonic Bonus'>
+                                <input class='line middle' style='width : 20px' target="counters.daemonic"/>
+                            </div>
+                        </div>
+
+                        <div class='flexcolumn subtitle lrpadding lrmargin'>
+                            <b class='flexmiddle' style='font-family : "Celestia Antiqua Std Bold"'>Movement</b>
+                            <div class='flexbetween'>Half <text>eval{(#:Ag + @size + @nnAg)}</text></div>
+                            <div class='flexbetween'>Full <text>eval{(#:Ag + @size + @nnAg)*2}</text></div>
+                            <div class='flexbetween'>Run <text>eval{(#:Ag + @size + @nnAg)*3}</text></div>
+                            <div class='flexbetween'>Charge <text>eval{(#:Ag + @size + @nnAg)*6}</text></div>
+                        </div>
+                    </div>
+                </div>
+                <div class='flexcolumn flex'>
+                    <b style='font-family : "Celestia Antiqua Std Bold";'> Conditions / Criticals </b>
+                    <textarea target='info.conditions' class='flex subtitle'>eval{@c.info.conditions}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class='outline lrmargin'></div>
+        <div class='flexcolumn flex2 lrmargin smooth'>
+            <tabs class='flexrow flexaround fit-x size4' tab-category="main-tab" tab-selected="alttext flexmiddle lrpadding smooth" tab-selected-style="color : rgb(235,225,210); background : radial-gradient(rgb(77, 42, 22), rgb(42, 21, 14));" style='font-family : "Celestia Antiqua Std Bold";'>
+                <tab class='flexmiddle link lrpadding' primary=true> Bio </tab>
+                <tab class='flexmiddle link lrpadding'> Info </tab>
+                <tab class='flexmiddle link lrpadding'> Gear </tab>
+                <tab class='flexmiddle link lrpadding'> Skills </tab>
+                <tab class='flexmiddle link lrpadding'> Psychic </tab>
+            </tabs>
+            <div main-tab="Bio" class='flex flexcolumn'>
+                <ui class='flex2 flexcolumn outlinebottom' name='ui_rawNotesv2'/>
+            </div>
+            <div main-tab="Info" class='flex flexcolumn'>
+                <div class='flexrow padding'>
+                    <div class='flexcolumn'>
+                        <b style='font-family : "Celestia Antiqua Std Bold";'>Info</b>
+                        <bank target='info' ignore="name,img,notes,aptitudes,conditions">
+                            <div class='flexrow flexbetween'>
+                                <b> eval{@%path%.name} </b>
+                                <input class='line lrmargin middle' target='info.%index%'></input>
+                            </div>
+                        </bank>
+                    </div>
+                    <div class='spadding'></div>
+                    <div class='flex flexcolumn'>
+                        <b style='font-family : "Celestia Antiqua Std Bold";'>Aptitudes</b>
+                        <textarea class='flex' target='info.aptitudes'>eval{@aptitudes || ""}</textarea>
+
+                        <b class='flexbetween' style='font-family : "Celestia Antiqua Std Bold";'><text>Experience</text> <text>(eval{@exp + @exp_spent})</text></b>
+                        <div class='flexrow flexbetween'>
+                            <div class='subtitle flexbetween flex'>
+                                <b>Available</b>
+                                <b class='lrmargin' edit="counters.exp">eval{@exp}</b>
+                            </div>
+                            <div class='flex'></div>
+                            <div class='subtitle flexbetween flex'>
+                                <b>Spent</b>
+                                <b class='lrmargin' edit="counters.exp_spent">eval{@exp_spent}</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='flexcolumn flex padding'>         
+                    <div class='flexbetween outlinebottom'>
+                        <b>Talents</b> 
+                        <b class='create link'>
+                            Add
+                            <click>
+                                <create type='TALENT' target="talents"/>
+                            </click>
+                        </b>
+                    </div>
+                    <div scroll-save="talents-scroll" class='flex scroll-y'>
+                        <bank target='talents'>
+                            <div>
+                                <div class='flexbetween'>
+                                    <b class='link' style='font-family : "Celestia Antiqua Std Bold";'>
+                                        eval{@%path%.info.name}
+                                        <click>
+                                            <delete cond="eval{@%path%.hidden != 0}" target="talents.%index%.hidden"></delete>
+                                            <setAttr cond="eval{@%path%.hidden == 0}" target="talents.%index%.hidden" value="true"></setAttr>
+                                        </click>
+                                    </b>
+                                    <div>
+                                        <span class='glyphicon glyphicon-edit link'>
+                                            <click>
+                                                <change target="talents.%index%"></change>
+                                            </click>
+                                        </span>
+                                        <span class='glyphicon glyphicon-trash destroy link'>
+                                            <click>
+                                                <delete target="talents.%index%"></delete>
+                                            </click>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div cond="eval{@%path%.hidden == 0}" class='flexbetween lrpadding outlinebottom' edit="talents.%index%.info.notes.current" style='margin-bottom : 1.0em; min-height : 12px;'>
+                                    <b>traverse{talents.%index%.info.notes.current}</b>
+                                </div>
+                            </div>
+                        </bank>
+                    </div>
+                </div>
+                <div class='flexrow padding'>
+                    <div class='flex'>
+                        <div class='flexbetween outlinebottom'>
+                            <b>Special Rules</b>
+                            <b class='create link'>
+                                Add
+                                <click>
+                                    <create type='SPECIAL RULE' target="specials"/>
+                                </click>
+                            </b>
+                        </div>
+                        <bank class='scroll-y' scroll-save="specials-scroll" target='specials' style='height : 70px;'>
+                            <div>
+                                <div class='flexbetween'>
+                                    <b class='link' style='font-family : "Celestia Antiqua Std Bold";'>
+                                        eval{@%path%.info.name}
+                                        <click>
+                                            <delete cond="eval{@%path%.hidden != 0}" target="specials.%index%.hidden"></delete>
+                                            <setAttr cond="eval{@%path%.hidden == 0}" target="specials.%index%.hidden" value="true"></setAttr>
+                                        </click>
+                                    </b>
+                                    <div>
+                                        <span class='glyphicon glyphicon-edit link'>
+                                            <click>
+                                                <change target="specials.%index%"></change>
+                                            </click>
+                                        </span>
+                                        <span class='glyphicon glyphicon-trash destroy link'>
+                                            <click>
+                                                <delete target="specials.%index%"></delete>
+                                            </click>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div cond="eval{@%path%.hidden == 0}" class='flexbetween lrpadding outlinebottom' edit="specials.%index%.info.notes.current" style='margin-bottom : 1.0em; min-height : 12px;'>
+                                    <b>traverse{specials.%index%.info.notes.current}</b>
+                                </div>
+                            </div>
+                        </bank>
+                    </div>
+                    <div class='spadding'></div>
+                    <div class='flex'>
+                        <div class='flexbetween outlinebottom'>
+                            <b>Traits</b>
+                            <b class='create link'>
+                                Add
+                                <click>
+                                    <create type='TRAIT' target="traits"/>
+                                </click>
+                            </b>
+                        </div>
+                        <bank class='scroll-y' scroll-save="traits" target='traits' style='height : 70px;'>
+                            <div>
+                                <div class='flexbetween'>
+                                    <b class='link' style='font-family : "Celestia Antiqua Std Bold";'>
+                                        eval{@%path%.info.name}
+                                        <click>
+                                            <delete cond="eval{@%path%.hidden != 0}" target="traits.%index%.hidden"></delete>
+                                            <setAttr cond="eval{@%path%.hidden == 0}" target="traits.%index%.hidden" value="true"></setAttr>
+                                        </click>
+                                    </b>
+                                    <div>
+                                        <span class='glyphicon glyphicon-edit link'>
+                                            <click>
+                                                <change target="traits.%index%"></change>
+                                            </click>
+                                        </span>
+                                        <span class='glyphicon glyphicon-trash destroy link'>
+                                            <click>
+                                                <delete target="traits.%index%"></delete>
+                                            </click>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div cond="eval{@%path%.hidden == 0}" class='flexbetween lrpadding outlinebottom' edit="traits.%index%.info.notes.current" style='margin-bottom : 1.0em; min-height : 12px;'>
+                                    <b>traverse{traits.%index%.info.notes.current}</b>
+                                </div>
+                            </div>
+                        </bank>
+                    </div>
+                </div>
+            </div>
+            <div main-tab="Gear" class='scroll-y flex padding' scroll-save="gear-scroll">
+                <div class='flexbetween'>
+                    <b>Gear(eval{@:weight() kg})</b> 
+                    <b class='create link'>
+                        Add
+                        <click>
+                            <create type='ITEM' target="inventory"/>
+                        </click>
+                    </b>
+                </div>
+                <list target='inventory' connect="inventorySort">
+                <div>
+                    <div class='flexrow'> 
+                        <div class='flexrow outline smooth' style='width : 100px;'>
+                            <ui name='ui_image' scope-lookup="inventory.%index%.info.img" scope-fit='cover'/>
+                        </div>
+                        <div class='flexcolumn flex outlinebottom'>
+                            <div class='flexrow flexbetween'>
+                                <b class='line size2 lrpadding flex' edit="inventory.%index%.info.name" style='font-family : "Celestia Antiqua Std Bold"; min-height : 10px; min-width : 10px;'>traverse{inventory.%index%.info.name.current}</b>
+                                <div class='flexrow'>
+                                    <div class='flexrow flexmiddle'>
+                                        <div>
+                                            <span class='glyphicon glyphicon-search link' width='400px' height='400px'>
+                                                <click>
+                                                    <popout title='traverse{inventory.%index%.info.name.current}'>
+                                                        <div class='flex sheet1 spadding' style='font-family : "ColumbusMTStd-Semibold"'>
+                                                            traverse{inventory.%index%.info.notes.current}
+                                                        </div>
+                                                    </popout>
+                                                </click>
+                                            </span>
+                                            <span class='glyphicon glyphicon-edit link'>
+                                                <click>
+                                                    <change target="inventory.%index%"></change>
+                                                </click>
+                                            </span>
+                                            <span class='glyphicon glyphicon-trash link destroy'>
+                                                <click>
+                                                    <delete target="inventory.%index%"></delete>
+                                                </click>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='flexrow flexbetween subtitle'>
+                                <div class='flexrow flexmiddle lrmargin'>
+                                    <div class='flexrow flexmiddle bold'>x<input class='lrmargin line middle' target='inventory.%index%.info.quantity' style='width : 24px;'/></div>
+                                    <div class='flexrow flexmiddle bold'><input class='lrmargin line middle' target='inventory.%index%.info.weight' style='width : 24px;'/>kg</div>
+                                </div>        
+                                <div class='flexrow flexbetween flex'>
+                                    <select class='inactive middle smooth' target='inventory.%index%.info.type'>
+                                        <option value=''>None</option>
+                                        <option>Basic</option>
+                                        <option>Pistol</option>
+                                        <option>Heavy</option>
+                                        <option>Melee</option>
+                                        <option>Thrown</option>
+                                        <option>Armor</option>
+                                        <option>Shield</option>
+                                    </select>
+                                    <div class='flexrow' cond='eval{@%path%.tags.equipped}'>
+                                        <select class='inactive middle smooth' cond="eval{'@%path%.info.type'!='Armor'}" target='inventory.%index%.equip.hands'>
+                                            <option>One-Handed</option>
+                                            <option>Two-Handed</option>
+                                            <option selected="true">Other</option>
+                                        </select>
+                                    </div>
+                                </div>                  
+                                <button class='background alttext flexmiddle' cond='eval{!@%path%.tags.equipped}'>
+                                    Equip
+                                    <click>
+                                        <setAttr target="inventory.%index%.tags.equipped" value='1'/>
+                                    </click>
+                                </button>
+                                <button class='background alttext flexmiddle' cond='eval{@%path%.tags.equipped}'>
+                                    Un-Equip
+                                    <click>
+                                        <setAttr target="inventory.%index%.tags.equipped" value='0'/>
+                                    </click>
+                                </button>
+                                <button class='background alttext flexmiddle' cond='traverse{inventory.%index%.weapon.damage.current}'>
+                                    Damage
+                                    <click>
+                                        <prompt align="right">
+                                            <b>Modifier (traverse{inventory.%index%.weapon.damage.current})</b>
+                                            <userinput class='middle' varname="modifier"/>
+                                            <var pen='@%path%.weapon.pen' fell='@%path%.weapon.fell' holy='@%path%.weapon.holy'/>
+                                        </prompt>
+                                        <chat flavor='traverse{inventory.%index%.info.name.current} Damage' roll="traverse{inventory.%index%.weapon.damage.current} + @modifier"/>
+                                    </click>
+                                </button>
+                            </div>
+                            <div class='flexrow flexbetween flex' cond='eval{@%path%.tags.equipped}'>
+                                <div class='flexcolumn flex lrpadding' style='min-height : 60px;' edit='inventory.%index%.info.notes' cond="eval{'@%path%.info.type' == 'None' || '@%path%.info.type' == '0'}"> 
+                                    traverse{inventory.%index%.info.notes.current}
+                                </div>
+                                <div class='flexrow flexbetween flexwrap subtitle lrmargin' cond="eval{'@%path%.info.type'!='Armor' && '@%path%.info.type'!='Shield' && '@%path%.info.type'!='Melee' && '@%path%.info.type' != 'None' && '@%path%.info.type' != '0'}">
+                                    <div class='flexrow flexmiddle'>RNG<input class='lrmargin middle line' target='inventory.%index%.weapon.range' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle'>DMG<input class='lrmargin middle line' target='inventory.%index%.weapon.damage' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle'>PEN<input class='lrmargin middle line' target='inventory.%index%.weapon.pen' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle'>HOL<input class='lrmargin middle line' target='inventory.%index%.weapon.holy' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle'>FEL<input class='lrmargin middle line' target='inventory.%index%.weapon.fell' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle'>ROF<input class='lrmargin middle line' target='inventory.%index%.weapon.rof' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle'>CLP<input class='lrmargin middle line' target='inventory.%index%.weapon.ammo' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle'>RLD<input class='lrmargin middle line' target='inventory.%index%.weapon.reload' style='width : 40px;'/></div>
+                                </div>
+                                <div class='flexcolumn flexaround subtitle lrmargin inactive outline smooth' cond="eval{'@%path%.info.type'=='Armor' || '@%path%.info.type'=='Shield'}" style='width:80px; height : 80px; background-image : url("/content/outline.png"); background-size : contain; background-position : center; background-repeat : no-repeat;'>
+                                    <div class='flexrow flexaround'>
+                                        <input class='lrmargin middle' target='inventory.%index%.equip.armorH' style='width : 20px;'/>
+                                    </div>
+                                    <div class='flexrow flexaround'>
+                                        <input class='lrmargin middle' target='inventory.%index%.equip.armorAR' style='width : 20px;'/>
+                                        <input class='lrmargin middle' target='inventory.%index%.equip.armorB' style='width : 20px;'/>
+                                        <input class='lrmargin middle' target='inventory.%index%.equip.armorAL' style='width : 20px;'/>
+                                    </div>
+                                    <div class='flexrow flexaround'>
+                                        <input class='lrmargin middle' target='inventory.%index%.equip.armorLR' style='width : 20px;'/>
+                                        <input class='lrmargin middle' target='inventory.%index%.equip.armorLL' style='width : 20px;'/>
+                                    </div>
+                                </div>
+                                <div class='flexrow subtitle flex' cond="eval{'@%path%.info.type'=='Armor' || '@%path%.info.type'=='Shield'}">
+                                    <div class='flex'></div>
+                                    <div class='flexcolumn'>
+                                        <button class='background alttext outline smooth hover2 flexmiddle' cond='eval{@%path%.tags.equipped}'>
+                                            Armor On
+                                            <click>
+                                                <setAttr target="counters.armorH" value='eval{@%path%.equip.armorH}'/>
+                                                <setAttr target="counters.armorAR" value='eval{@%path%.equip.armorAR}'/>
+                                                <setAttr target="counters.armorB" value='eval{@%path%.equip.armorB}'/>
+                                                <setAttr target="counters.armorAL" value='eval{@%path%.equip.armorAL}'/>
+                                                <setAttr target="counters.armorLR" value='eval{@%path%.equip.armorLR}'/>
+                                                <setAttr target="counters.armorLL" value='eval{@%path%.equip.armorLL}'/>
+                                            </click>
+                                        </button>
+                                        <button class='background alttext outline smooth hover2 flexmiddle' cond='eval{@%path%.tags.equipped}'>
+                                            Armor Off
+                                            <click>
+                                                <setAttr target="counters.armorH" value='0'/>
+                                                <setAttr target="counters.armorAR" value='0'/>
+                                                <setAttr target="counters.armorB" value='0'/>
+                                                <setAttr target="counters.armorAL" value='0'/>
+                                                <setAttr target="counters.armorLR" value='0'/>
+                                                <setAttr target="counters.armorLL" value='0'/>
+                                            </click>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class='flexrow flexwrap lrmargin' cond="eval{'@%path%.info.type'=='Melee'}">
+                                    <div class='flexrow flexmiddle' style='width : 100px;'>eval{@%path%.weapon.damage.name}<input class='lrmargin line' target='inventory.%index%.weapon.damage' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle' style='width : 100px;'>eval{@%path%.weapon.pen.name}<input class='lrmargin line' target='inventory.%index%.weapon.pen' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle' style='width : 100px;'>eval{@%path%.weapon.holy.name}<input class='lrmargin line' target='inventory.%index%.weapon.holy' style='width : 40px;'/></div>
+                                    <div class='flexrow flexmiddle' style='width : 100px;'>eval{@%path%.weapon.fell.name}<input class='lrmargin line' target='inventory.%index%.weapon.fell' style='width : 40px;'/></div>
+                                </div>
+                                <div class='flexrow subtitle'>
+                                    <div class='flexcolumn middle' cond="eval{'@%path%.info.type'!='Armor' && '@%path%.info.type'!='Shield' && '@%path%.info.type'!='None' && '@%path%.info.type'!='0'}">
+                                        <button class='background alttext'>
+                                            eval{'@%path%.info.type'=="Melee"?'Single':'Single'}
+                                            <click>
+                                                <prompt align="right">
+                                                    <b>Modifier</b>
+                                                    <userinput class='middle' varname="modifier" value='10'/>
+                                                    <b>Threshold</b>
+                                                    <userinput class='middle' varname="threshold" value="'@%path%.info.type'=='Melee'?@WS:@BS"/>
+                                                </prompt>
+                                                <chat roll="d100 - @modifier - (@size * 10)" flavor="traverse{inventory.%index%.info.name.current} Attack!" roll-ui="ui_statTest">
+                                                    <var degBonus="((@nneval{'@%path%.info.type'=='Melee'?'WS':'BS'})/2)f"/>
+                                                    <pull modifier="@size"/>
+                                                    <save total="@total" threshold="@threshold" modifier="@modifier" hitpoint='(@total-(@total/10)f*10)*10+(@total/10)f' degBonus="((@nneval{'@%path%.info.type'=='Melee'?'WS':'BS'})/2)f"/>
+                                                </chat>
+                                                <chat>
+                                                    <display>
+                                                        <div class='subtitle lrpadding flexrow flexmiddle flexwrap' cond='eval{@total<=@threshold}'>
+                                                            <!--Head Shot-->
+                                                            <div cond="eval{@hitpoint<=10}">
+                                                                <b>Head</b>
+                                                            </div>
+
+                                                            <!--Right Arm Shot-->
+                                                            <div cond="eval{@hitpoint>10 && @hitpoint<20}">
+                                                                <b>Right Arm</b>
+                                                            </div>
+
+
+                                                            <!--Body Shot-->
+                                                            <div cond="eval{@hitpoint>30 && @hitpoint<70}">
+                                                                <b>Body</b>
+                                                            </div>
+
+
+                                                            <!--Left Arm Shot-->
+                                                            <div cond="eval{@hitpoint>20 && @hitpoint<30}">
+                                                                <b>Left Arm</b>
+                                                            </div>
+
+
+                                                            <!--Right Leg Shot-->
+                                                            <div cond="eval{@hitpoint>70 && @hitpoint<85}">
+                                                                <b>Right Leg</b>
+                                                            </div>
+
+
+                                                            <!--Left Leg Shot-->
+                                                            <div cond="eval{@hitpoint>=85 && @hitpoint<=100}">
+                                                                <b>Left Leg</b>
+                                                            </div>
+                                                        </div>
+                                                    </display>
+                                                </chat>
+                                            </click>
+                                        </button>
+                                        <button class='background alttext'>
+                                            eval{'@%path%.info.type'=="Melee"?'Semi':'Semi'}
+                                            <click>
+                                                <prompt align="right">
+                                                    <b>Modifier</b>
+                                                    <userinput class='middle' varname="modifier"/>
+                                                    <b>Threshold</b>
+                                                    <userinput class='middle' varname="threshold" value="'@%path%.info.type'=='Melee'?@WS:@BS"/>
+                                                </prompt>
+                                                <chat roll="d100 - @modifier - (@size * 10)" flavor="traverse{inventory.%index%.info.name.current} Attack!" roll-ui="ui_statTest">
+                                                    <var degBonus="((@nneval{'@%path%.info.type'=='Melee'?'WS':'BS'})/2)f" degreeTick="2"/>
+                                                    <pull modifier="@size"/>
+                                                    <save total="@total" threshold="@threshold" modifier="@modifier" hitpoint='(@total-(@total/10)f*10)*10+(@total/10)f' degBonus="((@nneval{'@%path%.info.type'=='Melee'?'WS':'BS'})/2)f" degreeTick="2"/>
+                                                </chat>
+                                                <chat>
+                                                    <display>
+                                                        <div class='subtitle lrpadding flexrow flexmiddle flexwrap' cond='eval{@total<=@threshold}'>
+                                                            <!--Head Shot-->
+                                                            <div cond="eval{@hitpoint<=10}">
+                                                                <b>Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+
+                                                            <!--Right Arm Shot-->
+                                                            <div cond="eval{@hitpoint>10 && @hitpoint<20}">
+                                                                <b>Right Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Arm</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Arm</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Body Shot-->
+                                                            <div cond="eval{@hitpoint>30 && @hitpoint<70}">
+                                                                <b>Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Left Arm Shot-->
+                                                            <div cond="eval{@hitpoint>20 && @hitpoint<30}">
+                                                                <b>Left Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Arm</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Arm</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Right Leg Shot-->
+                                                            <div cond="eval{@hitpoint>70 && @hitpoint<85}">
+                                                                <b>Right Leg</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Left Leg Shot-->
+                                                            <div cond="eval{@hitpoint>=85 && @hitpoint<=100}">
+                                                                <b>Left Leg</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+                                                        </div>
+                                                    </display>
+                                                </chat>
+                                            </click>
+                                        </button>
+                                        <button class='background alttext'>
+                                            eval{'@%path%.info.type'=="Melee"?'Lightning':'Full'}
+                                            <click>
+                                                <prompt align="right">
+                                                    <b>Modifier</b>
+                                                    <userinput class='middle' varname="modifier" value='-10'/>
+                                                    <b>Threshold</b>
+                                                    <userinput class='middle' varname="threshold" value="'@%path%.info.type'=='Melee'?@WS:@BS"/>
+                                                </prompt>
+                                                <chat roll="d100 - @modifier - (@size * 10)" flavor="traverse{inventory.%index%.info.name.current} Attack!" roll-ui="ui_statTest">
+                                                    <var degBonus="((@nneval{'@%path%.info.type'=='Melee'?'WS':'BS'})/2)f" degreeTick="1"/>
+                                                    <pull modifier="@size"/>
+                                                    <save total="@total" threshold="@threshold" modifier="@modifier" hitpoint='(@total-(@total/10)f*10)*10+(@total/10)f' degBonus="((@nneval{'@%path%.info.type'=='Melee'?'WS':'BS'})/2)f" degreeTick="1"/>
+                                                </chat>
+                                                <chat>
+                                                    <display>
+                                                        <div class='subtitle lrpadding flexrow flexmiddle flexwrap' cond='eval{@total<=@threshold}'>
+                                                            <!--Head Shot-->
+                                                            <div cond="eval{@hitpoint<=10}">
+                                                                <b>Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+
+                                                            <!--Right Arm Shot-->
+                                                            <div cond="eval{@hitpoint>10 && @hitpoint<20}">
+                                                                <b>Right Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Arm</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Arm</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Body Shot-->
+                                                            <div cond="eval{@hitpoint>30 && @hitpoint<70}">
+                                                                <b>Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Left Arm Shot-->
+                                                            <div cond="eval{@hitpoint>20 && @hitpoint<30}">
+                                                                <b>Left Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Arm</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Arm</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Right Leg Shot-->
+                                                            <div cond="eval{@hitpoint>70 && @hitpoint<85}">
+                                                                <b>Right Leg</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+
+
+                                                            <!--Left Leg Shot-->
+                                                            <div cond="eval{@hitpoint>=85 && @hitpoint<=100}">
+                                                                <b>Left Leg</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+1*(@degreeTick)_1)}">, Head</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+2*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+3*(@degreeTick)_1)}">, Body</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+4*(@degreeTick)_1)}">, Arm</b>
+                                                                <b cond="eval{(((@threshold-@total)/10)c+@degBonus)>=(1+5*(@degreeTick)_1)}">, Body</b>
+                                                                <loop count='(((@threshold-@total)/10)c+@degBonus)-(1+4*(@degreeTick)_1)'>
+                                                                    <b>, Body</b>
+                                                                </loop>
+                                                            </div>
+                                                        </div>
+                                                    </display>
+                                                </chat>
+                                            </click>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <b class='middle lrpadding' edit="inventory.%index%.info.specials.current" style='font-family : "Celestia Antiqua Std Bold";'>traverse{inventory.%index%.info.specials.current}</b>
+                        </div>
+                    </div>
+                </div>
+                </list>
+            </div>
+            <div main-tab="Skills" class='flex flexcolumn padding'>
+                <div class='flexbetween'>
+                    <b>Skills</b> 
+                    <b class='create link'>
+                        Add
+                        <click>
+                            <create type='SKILL' target="skills"/>
+                        </click>
+                    </b>
+                </div>
+                <bank class='flex scroll-y' scroll-save="skill-scroll" target='skills'>
+                    <div class='flexrow flexbetween subtitle'>
+                        <input class='line flex lrmargin' target='skills.%index%.info.name'/>
+
+                        <select class='inactive middle smooth subtitle' target='skills.%index%.stat'>
+                            <option>WS</option>
+                            <option>BS</option>
+                            <option>S</option>
+                            <option>T</option>
+                            <option>Ag</option>
+                            <option>Int</option>
+                            <option>Per</option>
+                            <option>WP</option>
+                            <option>Fel</option>
+                        </select>
+
+                        <div class='flexrow lrpadding lrmargin'> 
+                            <input type="checkbox" target='skills.%index%' check='1' uncheck='0' isChecked='eval{R@%path%}'/>
+                            <div class='flexmiddle bold'>Trained</div>
+                        </div>
+
+                        <div class='flexmiddle lrpadding lrmargin'>
+                            <input type="checkbox" target='skills.%index%' mod='Rank' check='5' uncheck='0' isChecked='eval{@%path%.modifiers.Rank>0}'/>
+                            <input type="checkbox" target='skills.%index%' mod='Rank' check='10' uncheck='5' isChecked='eval{@%path%.modifiers.Rank>5}'/>
+                            <input type="checkbox" target='skills.%index%' mod='Rank' check='15' uncheck='10' isChecked='eval{@%path%.modifiers.Rank>10}'/>
+                            <input type="checkbox" target='skills.%index%' mod='Rank' check='20' uncheck='15' isChecked='eval{@%path%.modifiers.Rank>15}'/>
+                        </div>
+                        <button class='lrmargin' style="width : 30px">
+                            eval{@:sign((20-R@%path%*20-M@%path%)*-1)}
+                            <click>
+                                <prompt>
+                                    <b>Modifier (eval{@:sign((20-R@%path%*20-M@%path%)*-1)})</b>
+                                    <var threshold="@eval{@%path%.stat} + (20-R@%path%*20-M@%path%)*-1" statbonus='(20-R@%path%*20-M@%path%)*-1'/>
+                                    <userinput class='middle' varname="modifier"/>
+                                </prompt>
+                                <chat roll="d100 - @statbonus - @modifier" flavor='"traverse{skills.%index%.info.name.current}("+@:sign(@statbonus)+")"' roll-ui='ui_statTest'/>
+                            </click>
+                        </button>
+
+                        <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="skills.%index%" scope-icon="list-alt"></span>
+                    </div>
+                </bank>
+            </div>
+            <div main-tab="Psychic" scroll-save="skill-psy" class='scroll-y flex padding'>
+                <div class='flexbetween'>
+                    <b>Psychic Powers</b> 
+                    <b class='create link'>
+                        Add
+                        <click>
+                            <create type='POWER' target="powers"/>
+                        </click>
+                    </b>
+                </div>
+                <list target='powers' connect='powersList'>
+                <div class='flexrow outlinebottom'>
+                    <div class='flexcolumn flex lrmargin'>
+                        <div class='flexrow flexbetween'>
+                            <b class='line size2 middle' edit="powers.%index%.info.name" style='font-family : "Celestia Antiqua Std Bold";'>traverse{powers.%index%.info.name.current}</b>
+                            <div>
+                                <text>
+                                <b>traverse{powers.%index%.info.type.name}</b>
+                                <select class='inactive middle smooth subtitle' target='inventory.%index%.info.type'>
+                                    <option selected="true">Power</option>
+                                    <option>Barrage</option>
+                                    <option>Bolt</option>
+                                    <option>Blast</option>
+                                </select>
+                                </text>
+                                <span class='glyphicon glyphicon-edit link'>
+                                    <click>
+                                        <change target="powers.%index%"></change>
+                                    </click>
+                                </span>
+                                <span class='glyphicon glyphicon-trash link destroy'>
+                                    <click>
+                                        <delete target="powers.%index%"></delete>
+                                    </click>
+                                </span>
+                            </div>
+                        </div>
+                        <div class='flexrow flex'>
+                            <div class='flexrow outline smooth' style='width : 100px;'>
+                                <ui name='ui_image' scope-lookup="powers.%index%.info.img" scope-fit='cover'/>
+                            </div>
+                            <div edit='powers.%index%.info.notes' class='lrmargin flex subtitle'>
+                                traverse{powers.%index%.info.notes.current}
+                            </div>
+                            <div class='flexcolumn subtitle lrmargin'>
+                                <div class='flexrow flexbetween' style='width : 100px;'>eval{@%path%.weapon.range.name}<input class='lrmargin middle line' target='powers.%index%.weapon.range' style='width : 40px;'/></div>
+                                <div class='flexrow flexbetween' style='width : 100px;'>eval{@%path%.weapon.damage.name}<input class='lrmargin middle line' target='powers.%index%.weapon.damage' style='width : 40px;'/></div>
+                                <div class='flexrow flexbetween' style='width : 100px;'>eval{@%path%.spell.action.name}<input class='lrmargin middle line' target='powers.%index%.spell.action' style='width : 40px;'/></div>
+                                <div class='flexrow flexbetween' style='width : 100px;'>eval{@%path%.spell.focus.name}<input class='lrmargin middle line' target='powers.%index%.spell.focus' style='width : 40px;'/></div>
+                                <div class='flexrow flexbetween' style='width : 100px;'>eval{@%path%.spell.sustained.name}<input class='lrmargin middle line' target='powers.%index%.spell.sustained' style='width : 40px;'/></div>
+                                <div class='flexrow flexbetween' style='width : 100px;'>eval{@%path%.spell.subtype.name}<input class='lrmargin middle line' target='powers.%index%.spell.subtype' style='width : 40px;'/></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </list>
+            </div>
+        </div>
+    </div>
+</div>
