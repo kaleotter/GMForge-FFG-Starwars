@@ -526,7 +526,21 @@ and open the template in the editor.
     background:#33492a;
 
     border: 1.5px #33492a outset;
+    
+    font-family: "abel";
+    color:white;
+    text-transform: uppercase;
 
+}
+
+.greyborder-round
+{
+    background:rgba(128,128,128,0.5);
+    
+    border: 1px black solid;
+    border-radius:10px;
+    
+    padding:4px;
 }
 
 .sheetbutton:active
@@ -548,6 +562,17 @@ and open the template in the editor.
 
     text-align:center;
 
+}
+/* tables */
+.table .tableborder
+{
+        border:1px solid black;
+}
+
+.table .tablerow
+{
+    border-right: 1px dashed;
+    border-bottom:1px dotted;
 }
 
 .prodie
@@ -667,14 +692,4 @@ and open the template in the editor.
 {
     border: 1px black solid;
     height: 60px;
-}
-
-.weaponcard .statsborder
-{
-    background:rgba(128,128,128,0.5);
-    
-    border: 1px black solid;
-    border-radius:10px;
-    
-    padding:4px;
 }

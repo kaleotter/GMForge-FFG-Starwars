@@ -698,7 +698,7 @@
           },
           "conc": {
             "name": "Concussive",
-            "current": 0
+            "current": 2
           },
           "cumb": {
             "name": "Cumbersome",
@@ -768,7 +768,7 @@
         "unranked_properties": {
           "cort": {
             "name": "Cortosis",
-            "current": 0
+            "current": 1
           },
           "knock": {
             "name": "Knockdown",

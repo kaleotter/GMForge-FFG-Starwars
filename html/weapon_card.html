@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class ="flexcolumn statsborder">
+            <div class ="flexcolumn greyborder-round">
 
                 <div class="flexrow weapstats"><p><b>Weapon Skill:</b></p> <select target ="weapon.skill">
 
@@ -74,6 +74,32 @@
                             <div cond="eval{@%path%=0}">eval{@%path%.name @%path%}</div>
                             </list>
 
+
+                        </div>
+
+                        <div class="sheetbutton">Modify
+                            <click>
+                                <prompt>
+                                    <div class="greyborder-round scroll-y" style="border:0px; height:300px; margin:3px">
+                                        <div class="flexcolumn table tableborder">
+                                            <bank target="weapon.ranked_properties">
+
+                                            <div class="flexrow">
+                                                <div class="tablerow" style="width:150px">
+                                                    <p>eval{@%path%.name}</p>
+                                                </div>
+                                                <div class="tablerow" style="width:54px">
+                                                    <userinput type="text" target="eval{@weapon.ranked_properties.%index%.current}" style="width:50px; margin:2px"/>
+                                                </div>
+                                            </div>
+
+
+
+                                            </bank>
+                                        </div>
+                                    </div>
+                                </prompt>
+                            </click>
                         </div>
                     </div>
                     <div class="flexcolumn propertycol">
@@ -83,6 +109,10 @@
                             <div cond="eval{@%path%=0}">eval{@%path%.name}</div>
                             </list>
 
+
+
+                        </div>
+                        <div class="sheetbutton">Modify
                         </div>
                     </div>
                 </div>
