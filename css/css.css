@@ -592,6 +592,13 @@ and open the template in the editor.
     border-radius: 0px 20px 20px 0px
 }
 
+.weaponcard .weapontabs
+{
+    margin-bottom: 2px;
+    
+    border-bottom: 2px black solid;
+}
+
 .weaponcard .rightside
 {
     background-size: 100% 100%;
@@ -621,8 +628,53 @@ and open the template in the editor.
     height: 275px;
 }
 
-.weaponcard .leftside p
+.weaponcard p
 {
     font-family: "abel";
     font-size:12pt;
+    font-align:left;
+}
+
+.weaponcard .weapstats p
+{
+    text-align: left;
+    width: 120px;
+}
+
+.weaponcard .leftside p
+{
+    text-align: left;
+    width: 120px;
+}
+
+.weaponcard .leftside input
+{
+    width: 60px;
+}
+.weaponcard .mainStats
+{
+    max-width:200px;
+    
+}
+
+.weaponcard .propertycol
+{
+    width:30%;
+    height:95%;
+}
+
+.weaponcard .ranked-property
+{
+    border: 1px black solid;
+    height: 60px;
+}
+
+.weaponcard .statsborder
+{
+    background:rgba(128,128,128,0.5);
+    
+    border: 1px black solid;
+    border-radius:10px;
+    
+    padding:4px;
 }
