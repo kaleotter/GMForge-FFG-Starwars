@@ -641,53 +641,160 @@
         "notes": {
           "name": "Notes"
         },
-        "weight":{"name":"encumbrance", "current": 0},
-        "price":{"name":"price", "current": 0}
+        "weight": {
+          "name": "encumbrance",
+          "current": 0
+        },
+        "price": {
+          "name": "price",
+          "current": 0
+        }
       },
-      "weapon":{
-                "dam":{"name": "damage", "current":0},
-                "crit":{"name":"critical","current":0},
-                "rng":{"name":"range","current":0},
-                "skill":{"name":"skill","current":0},
-                "hp":{
-                  "max":{"current":0},
-                    "used":{"current":0}
-                },
-                "ranked_properties":{
-                    "acc":{"name":"Accurate","current":0},
-                    "auto":{"name":"Auto-Fire","current":0},
-                    "blast":{"name":"Blast", "current":0},
-                    "breach":{"name":"Breach", "current":0},
-                    "burn":{"name":"Burn", "current":0},
-                    "conc":{"name":"Concussive", "current":0},
-                    "cumb":{"name":"Cumbersome", "current":0},
-                    "def":{"name":"Defensive", "current":0},
-                    "defl":{"name":"Deflection", "current":0},
-                    "diso":{"name":"Disorient", "current":0},
-                    "ensn":{"name":"Ensnare", "current":0},
-                    "guid":{"name":"Guided", "current":0},
-                    "ina":{"name":"Innacurate", "current":0},
-                    "lam":{"name":"Limited Ammo", "current":0},
-                    "lnk":{"name":"Linked", "current":0},
-                    "pie":{"name":"Pierce", "current":0},
-                    "prep":{"name":"Prepare", "current":0},
-                    "slo":{"name":"Slow-Firing", "current":0},
-                    "stun":{"name":"Stun", "current":0},
-                    "tract":{"name":"Tractor", "current":0},
-                    "unw":{"name":"Unwieldy", "current":0},
-                    "vic":{"name":"Vicious","current":0}
-                },
-                "unranked_properties":
-                {
-                    "cort":{"name":"Cortosis", "current":0},
-                    "knock":{"name":"Knockdown", "current":0},
-                    "inf":{"name":"Inferior","current":0},
-                    "ion":{"name":"Ion","current":0},
-                    "stund":{"name":"Stun Damage", "current":0},
-                    "sund":{"name":"Sunder", "current":0},
-                    "sup":{"name":"superior", "current":0}                                    
-                    
-                }
+      "weapon": {
+        "dam": {
+          "name": "damage",
+          "current": 0
+        },
+        "crit": {
+          "name": "critical",
+          "current": 0
+        },
+        "rng": {
+          "name": "range",
+          "current": 0
+        },
+        "skill": {
+          "name": "skill",
+          "current": 0
+        },
+        "hp": {
+          "max": {
+            "current": 0
+          },
+          "used": {
+            "current": 0
+          }
+        },
+        "ranked_properties": {
+          "acc": {
+            "name": "Accurate",
+            "current": 0
+          },
+          "auto": {
+            "name": "Auto-Fire",
+            "current": 0
+          },
+          "blast": {
+            "name": "Blast",
+            "current": 0
+          },
+          "breach": {
+            "name": "Breach",
+            "current": 0
+          },
+          "burn": {
+            "name": "Burn",
+            "current": 0
+          },
+          "conc": {
+            "name": "Concussive",
+            "current": 0
+          },
+          "cumb": {
+            "name": "Cumbersome",
+            "current": 0
+          },
+          "def": {
+            "name": "Defensive",
+            "current": 0
+          },
+          "defl": {
+            "name": "Deflection",
+            "current": 0
+          },
+          "diso": {
+            "name": "Disorient",
+            "current": 0
+          },
+          "ensn": {
+            "name": "Ensnare",
+            "current": 0
+          },
+          "guid": {
+            "name": "Guided",
+            "current": 0
+          },
+          "ina": {
+            "name": "Innacurate",
+            "current": 0
+          },
+          "lam": {
+            "name": "Limited Ammo",
+            "current": 0
+          },
+          "lnk": {
+            "name": "Linked",
+            "current": 0
+          },
+          "pie": {
+            "name": "Pierce",
+            "current": 0
+          },
+          "prep": {
+            "name": "Prepare",
+            "current": 0
+          },
+          "slo": {
+            "name": "Slow-Firing",
+            "current": 0
+          },
+          "stun": {
+            "name": "Stun",
+            "current": 0
+          },
+          "tract": {
+            "name": "Tractor",
+            "current": 0
+          },
+          "unw": {
+            "name": "Unwieldy",
+            "current": 0
+          },
+          "vic": {
+            "name": "Vicious",
+            "current": 0
+          }
+        },
+        "unranked_properties": {
+          "cort": {
+            "name": "Cortosis",
+            "current": 0
+          },
+          "knock": {
+            "name": "Knockdown",
+            "current": 0
+          },
+          "inf": {
+            "name": "Inferior",
+            "current": 0
+          },
+          "ion": {
+            "name": "Ion",
+            "current": 0
+          },
+          "stund": {
+            "name": "Stun Damage",
+            "current": 0
+          },
+          "sund": {
+            "name": "Sunder",
+            "current": 0
+          },
+          "sup": {
+            "name": "superior",
+            "current": 0
+          }
+        }
       }
     },
     "Armor": {
@@ -770,7 +877,7 @@
       },
       "Force Power": {},
       "Talent": {},
-      "Weapon": {},
+      "Weapon": {"content":"<ui name='WEAPON_CARD_UI'/>"},
       "Armor": {}
     },
     "ui": {

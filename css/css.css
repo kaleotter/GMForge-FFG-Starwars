@@ -567,3 +567,28 @@ and open the template in the editor.
 
 .eotedice
 {font-family:'Eote Dice'}
+
+
+
+
+
+/* ---weapon card--- */
+
+.weaponcard .background
+{
+    
+}
+
+.weaponcard .rightside
+{
+    backround:white;
+    background-size: 100% 100%
+}
+
+.weaponcard .title
+{
+    font-family: "abel";
+    font-size:20pt;
+    
+    background:none;
+}
