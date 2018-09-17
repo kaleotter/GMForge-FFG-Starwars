@@ -1,12 +1,27 @@
-<div class="flexcolumn weaponcard background">
+<div class="flexrow weaponcard cardbg">
     <div class="flexcolumn leftside">
-
+        <br>
+        <div class='flex flexcolumn white outline smooth' style='position : relative;'><br>        <ui name='ui_image'/><br>      </div><br>
+        <p><b>Price:</b> <input type='text' target='info.price'/></p>
+        <p><b>Encumbrance</b>: <input type='text' target='info.weight'/></p>
     </div>
-    <div class="flexrow rightside">
+    <div class="flecolumn rightside">
+
         <div class="flexrow weapontabs">
+            <tabs class="flexrow flexaround fit-x size4" tab-category='main-tab' tab-selected="alttext flexmiddle lrpadding smooth" tab-selected-style="height: 40px; width:100px; background-image:url(images/svg/tabbg-s.svg); font-family:'abel'; font-size:12pt; text-transform:uppercase ";'>
+                <tab class='flexmiddle link lrpadding cstab' primary="true">description</tab>
+                <tab class='flexmiddle link lrpadding cstab'>statistics</tab>
+                <tab class='flexmiddle link lrpadding cstab'>hardpoints</tab>
+        </div>
+
+
+        <div class="flexcolumn" main-tab='description'>
+            <input type="text" class="title" target="info.name" />
+            <div class='flexcolumn info'>
+                <ui name='ui_rawNotes'/>    
+            </div>
 
         </div>
-        
-        <p class="weaponcard title">eval{@i.info.name}</p>
 
     </div>
+</div>

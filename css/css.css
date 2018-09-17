@@ -574,21 +574,55 @@ and open the template in the editor.
 
 /* ---weapon card--- */
 
-.weaponcard .background
+.weaponcard .cardbg
 {
+    background:url(/images/bg/blanksheet.jpg);
+    background-size: 100% 100%;
+    height:375px
+}
+
+.weaponcard .leftside
+{
+    width: 40%;
+    height: 375px;
+    background-color:rgba(128,128,128,0.5);
+    padding-left: 3px;
+    padding-right: 3px;
     
+    border-radius: 0px 20px 20px 0px
 }
 
 .weaponcard .rightside
 {
-    backround:white;
-    background-size: 100% 100%
+    background-size: 100% 100%;
+    height: 375px;
+    width:100%;
+    margin-left:5px
 }
 
 .weaponcard .title
 {
     font-family: "abel";
     font-size:20pt;
+    text-shadow:2px 2px #999999;
     
     background:none;
+    
+}
+
+.weaponcard .info
+{
+    border:1px solid black;
+    border-radius: 10px;
+    
+    margin-top:5px;
+    padding:2px;
+    width: 100%;
+    height: 275px;
+}
+
+.weaponcard .leftside p
+{
+    font-family: "abel";
+    font-size:12pt;
 }
