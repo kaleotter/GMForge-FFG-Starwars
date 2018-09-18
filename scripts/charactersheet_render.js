@@ -47,5 +47,11 @@
         let rendered = sync.render("ui_processUI")(obj,app,{display:html});
         return rendered;
     }); 
+    
+         sync.render("ITEM_CARD_UI", function(obj, app, scope){
+        let html = loadTemplate("html/item_card.html");
+        let rendered = sync.render("ui_processUI")(obj,app,{display:html});
+        return rendered;
+    }); 
 
 $('body').append('<link rel="stylesheet" href="/css/css.css" type="text/css" />');

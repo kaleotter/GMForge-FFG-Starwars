@@ -1,0 +1,21 @@
+
+<div class="flexrow itemcard cardbg">
+    <div class="flexcolumn leftside">
+        <br>
+        <div class='flex flexcolumn white outline smooth' style='position : relative;'>
+            <br>        
+            <ui name='ui_image'/><br>      
+        </div><br>
+
+        <div class="flexrow"><p><b>Price:</b></p> <input type='text' target='info.price'/></div>
+        <div class="flexrow"><p><b>Encumbrance</b>:</p> <input type='text' target='info.weight'/></div>
+        <div class="flexrow"><p><b>Rarity</b>:</p> <input type='text' target='info.rarity'/> </div>
+        <div class="flexrow"><p><b>Restricted?:</b></p><input type='checkbox' target='info.restricted' check='1' uncheck='0' isChecked='eval{info.restricted==1}' /></div>
+    </div>
+    <div class="flexcolumn rightside">
+        <input class="title" target="info.name"/>
+        <div class="flexcolumn info">
+             <ui name="ui_rawNotes"/>
+        </div>
+    </div>
+</div>

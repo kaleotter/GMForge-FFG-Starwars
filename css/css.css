@@ -601,14 +601,14 @@ and open the template in the editor.
 
 /* ---weapon card--- */
 
-.weaponcard .cardbg
+.itemcard .cardbg
 {
     background:url(/images/bg/blanksheet.jpg);
     background-size: 100% 100%;
     height:375px
 }
 
-.weaponcard .leftside
+.itemcard .leftside
 {
     width: 40%;
     height: 375px;
@@ -619,14 +619,14 @@ and open the template in the editor.
     border-radius: 0px 20px 20px 0px
 }
 
-.weaponcard .weapontabs
+.itemcard .weapontabs
 {
     margin-bottom: 2px;
     
     border-bottom: 2px black solid;
 }
 
-.weaponcard .rightside
+.itemcard .rightside
 {
     background-size: 100% 100%;
     height: 375px;
@@ -634,7 +634,7 @@ and open the template in the editor.
     margin-left:5px
 }
 
-.weaponcard .title
+.itemcard .title
 {
     font-family: "abel";
     font-size:20pt;
@@ -644,7 +644,7 @@ and open the template in the editor.
     
 }
 
-.weaponcard .info
+.itemcard .info
 {
     border:1px solid black;
     border-radius: 10px;
@@ -655,43 +655,43 @@ and open the template in the editor.
     height: 275px;
 }
 
-.weaponcard p
+.itemcard p
 {
     font-family: "abel";
     font-size:11pt;
     font-align:left;
 }
 
-.weaponcard .weapstats p
+.itemcard .weapstats p
 {
     text-align: left;
     width: 120px;
 }
 
-.weaponcard .leftside p
+.itemcard .leftside p
 {
     text-align: left;
     width: 120px;
 }
 
-.weaponcard .leftside input
+.itemcard .leftside input
 {
     width: 60px;
     font-size:10pt;
 }
-.weaponcard .mainStats
+.itemcard .mainStats
 {
     max-width:200px;
     
 }
 
-.weaponcard .propertycol
+.itemcard .propertycol
 {
     width:30%;
     height:95%;
 }
 
-.weaponcard .ranked-property
+.itemcard .ranked-property
 {
     border: 1px black solid;
     height: 60px;
