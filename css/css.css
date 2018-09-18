@@ -564,15 +564,17 @@ and open the template in the editor.
 
 }
 /* tables */
-.table .tableborder
+.table .tablebdr
 {
         border:1px solid black;
+        background:white;
 }
 
 .table .tablerow
 {
     border-right: 1px dashed;
     border-bottom:1px dotted;
+    background:white;
 }
 
 .prodie
@@ -656,7 +658,7 @@ and open the template in the editor.
 .weaponcard p
 {
     font-family: "abel";
-    font-size:12pt;
+    font-size:11pt;
     font-align:left;
 }
 
@@ -675,6 +677,7 @@ and open the template in the editor.
 .weaponcard .leftside input
 {
     width: 60px;
+    font-size:10pt;
 }
 .weaponcard .mainStats
 {
