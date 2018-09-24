@@ -1,0 +1,70 @@
+<div class="flexcolumn greyborder-round" style="width:100%">
+    <div class="table">
+        <h1>equipped Weapons</h1>
+        <table class='table'>
+            <col>
+            <col>
+            <col>
+            <col width="20">
+            <col width="20">
+            <col width="20">
+            <col>
+            <col>
+
+            <tr class="headingrow">
+                <th>Name</th>
+                <th>Skill</th>
+                <th>Range</th>
+                <th>Dam</th>
+                <th>Crit</th>
+                <th>qualities</th>
+                <th>equip</th>
+                <th>AAAAA</th>
+            </tr>
+
+            <tr>
+                <td><p>Unarmed</p></td>
+                <td><p>Brawl</p></td>
+                <td><p>Engaged</p></td>
+                <td><p>eval{@c.stats.br}</p></td>
+                <td style="font-family:'Eote Dice'; color:black">aaaa</td>
+
+                <td class=""> <div class="glyphicon glyphicon-info-sign"></td>
+                <td class ="">
+                    <label class="sheetswitch"><input type="checkbox" target="aaaa" checked="1" unchecked="0">
+                        <span class="slider"></span>
+                    </label>
+                </td>
+                <td>
+                    <div class="glyphicon glyphicon-edit link"></div><div class="glyphicon glyphicon-trash link"></div></td>
+
+            </tr>
+        </table>
+        <div class="flexrow"></div>
+
+
+    </div>
+
+    <div class="table">
+        <h1>Equipped armor</h1>
+    </div>
+
+    <div class="flexcolumn">
+        <p>Add new Gear</p><div class="glyphicon glyphicon-plus link">
+            <click>
+                <create type="ITEM" target="inventory"/>
+            </click>
+        </div>
+        <div class="flexrow"> COLUMN NAMES HEER</div>
+        <div class="flexcolumn table" style="width:100%">
+            <bank target="inventory">
+                <div class="flexrow">
+                    <div class="flexrow tablerow"><input target="%path%.info.qty"/>X</div>
+                    <div class="flexrow tablerow">eval{@%path%.info.weight}</div>
+                    <div class="flexrow tablerow">eval{@%path%.info.name.current}</div>
+                </div>
+            </bank>
+
+        </div>
+    </div>
+

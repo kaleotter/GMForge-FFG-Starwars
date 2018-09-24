@@ -1,0 +1,43 @@
+ 
+
+    <div class="flexrow weapontabs">
+        <tabs class="flexrow flexaround fit-x size4" tab-category='main-tab' tab-selected="alttext flexmiddle lrpadding smooth" tab-selected-style="height: 40px; width:100px; background-image:url(images/svg/tabbg-s.svg); font-family:'abel'; font-size:12pt; text-transform:uppercase ";'>
+            <tab class='flexmiddle link lrpadding cstab' primary="true">basic</tab>
+            <tab class='flexmiddle link lrpadding cstab'>statistics</tab>
+            <tab class='flexmiddle link lrpadding cstab'>Hardpoints</tab>
+    </div>
+
+
+    <div class="flexcolumn" main-tab='basic'>
+        <input type="text" class="itemname" target="info.name" />
+        <div class='flexcolumn info'>
+            <ui name='ui_rawNotes'/>    
+        </div>
+
+    </div>
+
+
+    <div class="flexcolumn" main-tab="statistics">
+
+        <div class="flexrow flexmiddle">
+
+            <div class="flexcolumn rtgbg">
+                <input type="text" target="equip.armor">
+                <div class="rtglabel">Soak</div>
+            </div>
+
+            <div class="flexcolumn deriveddbl" style="margin-left:150px">
+                <div class="title">Defence</div>
+                <div class="flexrow inputcontainer">
+                    <input type="text" target="equip.rdef"/>
+                    <input type="text" target="equip.mdef"/>
+                </div>
+                <div class="flexrow lowercontainer title">
+                    <div class="left">Ranged</div><div class="right">Melee</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+

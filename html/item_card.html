@@ -1,21 +1,34 @@
 
-<div class="flexrow itemcard cardbg">
-    <div class="flexcolumn leftside">
-        <br>
-        <div class='flex flexcolumn white outline smooth' style='position : relative;'>
-            <br>        
-            <ui name='ui_image'/><br>      
-        </div><br>
-
-        <div class="flexrow"><p><b>Price:</b></p> <input type='text' target='info.price'/></div>
-        <div class="flexrow"><p><b>Encumbrance</b>:</p> <input type='text' target='info.weight'/></div>
-        <div class="flexrow"><p><b>Rarity</b>:</p> <input type='text' target='info.rarity'/> </div>
-        <div class="flexrow"><p><b>Restricted?:</b></p><input type='checkbox' target='info.restricted' check='1' uncheck='0' isChecked='eval{info.restricted==1}' /></div>
-    </div>
-    <div class="flexcolumn rightside">
-        <input class="title" target="info.name"/>
-        <div class="flexcolumn info">
-             <ui name="ui_rawNotes"/>
+<div class="flexrow itemcard cardbg" style="background:url(/images/bg/blanksheet.jpg)">
+    <div class="flexcolumn leftside" style="padding-left:3px; padding-right: 3px;">
+        <div class="flexrow" style="margin-top:10px">
+            <p><b>Item Type:</b></p><select target="info.type">
+                <option> Item </option>
+                <option> Weapon</option>
+                <option> Armor</option>
+            </select>
         </div>
+            <div class='flex flexcolumn white outline smooth' style='position : relative; margin-top: 2px; margin-bottom: 2px;'>
+                <br>
+                <ui name='ui_image'/><br>      
+            </div>
+
+            <div class="flexrow"><p><b>Price:</b></p> <input type='text' target='info.price'/></div>
+            <div class="flexrow"><p><b>Encumbrance</b>:</p> <input type='text' target='info.weight'/></div>
+            <div class="flexrow"><p><b>Rarity</b>:</p> <input type='text' target='info.rarity'/> </div>
+            <div class="flexrow"><p><b>Restricted?:</b></p><input type='checkbox' target='info.restricted' check='1' uncheck='0' isChecked='eval{info.restricted==1}' /></div>
+        </div>
+    
+    <div class="flexcolumn rightside" cond="eval{'@i.info.type'=='Item'}">
+        <ui name="GEAR_CARD_UI"/>
+        </div>
+    
+    <div class="flexcolumn rightside" cond="eval{'@i.info.type'=='Weapon'}">
+        <ui name="WEAPON_CARD_UI" />
+        
+    </div>
+    
+    <div class="flexcolumn rightside" cond="eval{'@i.info.type'=='Armor'}">
+        <ui name="ARMOR_CARD_UI"/>
     </div>
 </div>

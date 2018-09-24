@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>templates/ffg-star-wars.json</url>
+            <bookmark id="1">
+                <name/>
+                <line>1967</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/html/itemcard_weapons.html</file>
+            <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/html/aaaaaaaaa.html</file>
             <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/templates/ffg-star-wars.json</file>
-            <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/html/skillstab_custom.html</file>
-            <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/html/charsheet.html</file>
+            <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/html/item_card.html</file>
             <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/css/css.css</file>
+            <file>file:/D:/SteamLibrary/steamapps/common/GM%20Forge%20-%20Virtual%20Tabletop/public/workshop/ffg-star-wars/html/equipment_tab.html</file>
         </group>
     </open-files>
 </project-private>

@@ -361,23 +361,23 @@ and open the template in the editor.
 .tableheading .namecol
 {
     min-width:45%;
-    
+
     text-align: center;
 }
 
 .tableheading .careercol
 {
     width:12%;
-    
+
     text-align:center;
 }
 
 .tableheading .rankscol
 {
     width:100%;
-    
+
     text-align:center;
-    
+
 }
 
 
@@ -497,9 +497,9 @@ and open the template in the editor.
 
 .roller .diinput
 {
-        background:url(/images/svg/di-fillable.svg);
+    background:url(/images/svg/di-fillable.svg);
     background-size: 100% 100%;
-    
+
     height:50px;
     width:50px;
     margin:4px;
@@ -508,9 +508,9 @@ and open the template in the editor.
 
 .roller .sbinput
 {
-        background:url(/images/svg/sb-fillable.svg);
+    background:url(/images/svg/sb-fillable.svg);
     background-size: 100% 100%;
-    
+
     height:50px;
     width:50px;
     margin:4px;
@@ -526,20 +526,22 @@ and open the template in the editor.
     background:#33492a;
 
     border: 1.5px #33492a outset;
-    
+
     font-family: "abel";
     color:white;
     text-transform: uppercase;
+    padding-left:2px;
+    padding-right:2px;
 
 }
 
 .greyborder-round
 {
     background:rgba(128,128,128,0.5);
-    
+
     border: 1px black solid;
     border-radius:10px;
-    
+
     padding:4px;
 }
 
@@ -566,8 +568,8 @@ and open the template in the editor.
 /* tables */
 .table .tablebdr
 {
-        border:1px solid black;
-        background:white;
+    border:1px solid black;
+    background:white;
 }
 
 .table .tablerow
@@ -575,6 +577,41 @@ and open the template in the editor.
     border-right: 1px dashed;
     border-bottom:1px dotted;
     background:white;
+}
+
+.table .headingrow tr
+{
+    text-align:left;
+
+
+}
+
+.table th
+{
+    font-family:"abel";
+    font-size:11pt;
+    text-transform: uppercase;
+}
+
+.table td
+{
+    text-align:left;
+    font-size:10pt;
+    
+    border-right: 1px dashed black;
+    border-bottom: 1px dotted black;
+}
+
+table p
+{
+    font-family:"abel"
+}
+.table h1
+{
+    font-family: "abel";
+    font-size: 10pt;
+    text-transform: uppercase;
+    text-align: left;
 }
 
 .prodie
@@ -596,33 +633,79 @@ and open the template in the editor.
 {font-family:'Eote Dice'}
 
 
+.sheetswitch
+{
+    position: relative;
+    display:inline-block;
+    width:60px;
+    height:34px;
+}
 
+ .sheetswitch input
+{display:none}
 
+.sheetswitch .slider
+{
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#ccc;
+    -webkit-transition:.4s;
+    transition: .4s;
+}
 
+.sheetswitch .slider:before
+{
+    position:absolute;
+    content:"";
+    height:26px;
+    width:26px;
+    left:4px;
+    bottom:4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: .4s;
+    
+}
+
+ input:checked + .slider
+{background-color: #2196f3;}
+
+input:focus + .slider
+{box-shadow: 0 0 1px #2196F3}
+
+input:checked + .slider:before
+{-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px)}
 /* ---weapon card--- */
 
-.itemcard .cardbg
+.itemcard .thecardbg
 {
-    background:url(/images/bg/blanksheet.jpg);
+    background:pink;
     background-size: 100% 100%;
-    height:375px
+    min-width:100%;
+    min-height:375px
 }
 
 .itemcard .leftside
 {
     width: 40%;
     height: 375px;
-    background-color:rgba(128,128,128,0.5);
+    background-color:rgba(128,128,128,0.8);
     padding-left: 3px;
     padding-right: 3px;
-    
+
     border-radius: 0px 20px 20px 0px
 }
 
 .itemcard .weapontabs
 {
     margin-bottom: 2px;
-    
+
     border-bottom: 2px black solid;
 }
 
@@ -634,21 +717,21 @@ and open the template in the editor.
     margin-left:5px
 }
 
-.itemcard .title
+.itemcard .itemname
 {
     font-family: "abel";
     font-size:20pt;
     text-shadow:2px 2px #999999;
-    
+
     background:none;
-    
+
 }
 
 .itemcard .info
 {
     border:1px solid black;
     border-radius: 10px;
-    
+
     margin-top:5px;
     padding:2px;
     width: 100%;
@@ -671,18 +754,19 @@ and open the template in the editor.
 .itemcard .leftside p
 {
     text-align: left;
-    width: 120px;
+    width: 80px;
 }
 
-.itemcard .leftside input
+.itemcard .leftside input, select
 {
+    font-family: "abel";
     width: 60px;
     font-size:10pt;
 }
 .itemcard .mainStats
 {
     max-width:200px;
-    
+
 }
 
 .itemcard .propertycol
