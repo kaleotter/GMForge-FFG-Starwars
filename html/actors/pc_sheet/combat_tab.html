@@ -44,4 +44,24 @@
     </div>
 
     <!--equipment and combat options side-->
+    <div class ="flexcolumn greyborder-round" style="border:none">
+        <div>
+            <!--equipped weapons-->
+            <div class="flexcolumn table">
+                <div class="flexrow tableheadings">
+                    <div style="width:100px">Name</div>
+                    <div style="width:100px">Skill</div>
+                    <div style="width:100px">Range</div>
+                    <div style="width:50px">Dam</div>
+                    <div style="width:50px">Crit</div>
+                    <div style="width:50px">special</div>
+                    <div></div>
+                    
+                </div>
+                <bank target="inventory">
+                    <div class="flexrow" cond="eval{'@%path%.info.type'=='Weapon' && @%path%.tags.equipped==1}"> We found guns</div>
+                </bank>
+            </div>
+        </div>
+    </div>
 </div>

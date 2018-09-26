@@ -588,7 +588,7 @@ input:checked + .pip
 
     border: 1px black solid;
     border-radius:10px;
-
+    margin:2px;
     padding:4px;
 }
 

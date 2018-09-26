@@ -50,8 +50,8 @@
                         </div>
                         <div class='flexrow tablerow midrow' style="min-width:64px;">
                             <div cond="eval{'@%path%.info.type'!='Item'}">
-                                <label class="smallSwitch"><input type="checkbox" target="%path%.tags.equipped" check="1"
-                                        unchecked="0" isChecked="eval{@%path%.tags.equipped==1}">
+                                <label class="smallSwitch"><input type="checkbox" target="c.inventory.%index%.tags.equipped" check="1"
+                                        uncheck="0" isChecked="eval{@c.inventory.%index%.tags.equipped.current==1}">
                                     <span class="smallSlider"></span>
                                 </label>
                             </div>
