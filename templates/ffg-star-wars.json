@@ -99,8 +99,14 @@
                 "mdef": {},
                 "rdef": {},
                 "propool": {},
-                "stimpaks":{"current":0},
-                "stimuse":{"current":5}
+                "stimpaks": {
+                    "name": "stimpaks",
+                    "current": 30
+                },
+                "stimuse": {
+                    "name": "uses",
+                    "current": 5
+                }
             },
             "skills": {
                 "general": {
@@ -599,14 +605,16 @@
                 },
                 "weight": {
                     "name": "Total Encumbrance",
-                    "current":0
+                    "current": 0
                 },
-
-                "enc":{"name":"encumbrance",
-                     "current":0},
-                "qty":{"name":"Quantity",
-                     "current":1},
-
+                "enc": {
+                    "name": "encumbrance",
+                    "current": 0
+                },
+                "qty": {
+                    "name": "Quantity",
+                    "current": 1
+                },
                 "rarity": {
                     "name": "Rarity",
                     "current": 0
@@ -623,11 +631,12 @@
                     "current": "Item"
                 }
             },
-
-            "tags":{"equipped":{"name":"equipped", "current":0}
-
+            "tags": {
+                "equipped": {
+                    "name": "equipped",
+                    "current": 0
+                }
             },
-
             "equip": {
                 "armor": {
                     "name": "Soak",
@@ -791,19 +800,20 @@
                     "max": {}
                 },
                 "range": {}
-            },      
+            },
             "_hud": {},
             "_calc": [
                 {
                     "target": "info.weight",
                     "eq": "@enc*@qty",
                     "cond": "@enc>0"
-                  },
-                  {
+                },
+                {
                     "target": "info.weight",
                     "cond": "@enc=0",
                     "eq": "@qty*0.2"
-                  }]
+                }
+            ]
         },
         "Force Power": {
             "_t": "i",

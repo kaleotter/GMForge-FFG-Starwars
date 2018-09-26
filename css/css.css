@@ -443,24 +443,40 @@ and open the template in the editor.
 
 /*stimpack elements */
 
+.stimuse
+{
+    position: relative;
+    display:inline-block;
+    height:20px;
+    width:25px;
+}
+
 .stimuse input
 {
     display:none;
 }
 
-.stimuse .pip
+.pip
 {
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    content:"";
     border:1px black solid;
     height:20px;
     width:25px;
-    background-color: green;
-    transition: 0.4s
+
+    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s
 }
 
-.pip + input:checked
+input:checked + .pip
 {
-background-color:transparent;
+    background-color: green;
 }
+
 
 /* ---diceroller dialog--- */
 

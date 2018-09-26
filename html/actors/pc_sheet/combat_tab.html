@@ -5,35 +5,35 @@
         <div class="flexcolumn">
             <!--Stimpack counter-->
             <div class="flexrow">
-                <label>Healing remaining: </label style="width:50px"><input type="text" target="counters.stimpacks" />
+                <label>Healing remaining: </label><input style="width:50px" type="text" target="counters.stimpaks" />
             </div>
-            <div class="flexrow stimuse">
-                <div>
-                    <input type="checkbox" disabled="disabled" isChecked="eval{@counters.stimuse>1}">
-                    <div class="pip"></div>
+            <div class="flexrow">
+                <div class="stimuse">
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=1 uncheck=0 isChecked='eval{@c.counters.stimuse > 0}'/>
+                    <span class="pip"></span>
                 </div>
-                <div>
-                    <input type="checkbox" disabled="disabled" isChecked="eval{@counters.stimuse>2}">
-                    <div class="pip"></div>
+                <div class="stimuse">
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=2 uncheck=1 isChecked="eval{@c.counters.stimuse > 1}"/>
+                    <span class="pip"></span>
                 </div>
 
-                <div>
-                    <input type="checkbox" disabled="disabled" isChecked="eval{@counters.stimuse>3}">
-                    <div class="pip"></div>
+                <div class="stimuse">
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=3 uncheck=2 isChecked="eval{@c.counters.stimuse > 2}"/>
+                    <span class="pip"></span>
                 </div>
-                <div>
-                    <input type="checkbox" disabled="disabled" isChecked="eval{@counters.stimuse>4}">
-                    <div class="pip"></div>
+                <div class="stimuse">
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=4 uncheck=3 isChecked="eval{@c.counters.stimuse > 3}"/>
+                    <span class="pip"></span>
+                </div class="stimuse">
+                <div class="stimuse">
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=5 uncheck=4 isChecked="eval{@c.counters.stimuse > 4}"/>
+                    <span class="pip"></span>
                 </div>
-                <div>
-                    <input type="checkbox" disabled="disabled" isChecked="eval{@counters.stimuse>5}">
-                    <div class="pip"></div>
-                </div>
-                <div class="sheetbutton">Heal (eval{@counters.stimuse}
+                <div class="sheetbutton">Heal (eval{@c.counters.stimuse})
                     <click>
-                        <setAttr target="counters.wounds" eq="@counters.wounds+@counters.stimuse"></setAttr>
-                        <setAttr target="counters.stimuse" eq="@counters.stimuse-1" cond="eval{@counters.stimuse>0}" />
-                        <setAttr target="counters.stimpaks" eq="@counters.stimpaks-1" cond="eval{@counters.stimpaks>0}" />
+                        <setAttr target="counters.wounds.current" value="eval{@c.counters.wounds.current + @c.counters.stimuse}"/>
+                        <setAttr target="counters.stimuse.current" value="eval{@c.counters.stimuse - 1}" cond="eval{@c.counters.stimuse>0}" />
+                        <setAttr target="counters.stimpaks.current" value="eval{@c.counters.stimpaks - 1}" cond="eval{@c.counters.stimpaks>0}" />
 
                     </click>
                 </div>
