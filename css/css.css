@@ -429,7 +429,14 @@ and open the template in the editor.
     font-size:11pt;
 }
 
-
+/*---equipment tab---*/
+.description1line
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display:block;
+}
 
 /* ---diceroller dialog--- */
 
@@ -566,17 +573,40 @@ and open the template in the editor.
 
 }
 /* tables */
-.table .tablebdr
+.table
 {
+    display:table;
     border:1px solid black;
     background:white;
+ 
 }
 
 .table .tablerow
 {
-    border-right: 1px dashed;
+    font-family:"abel";
+    font-size:12pt;
+    padding:2px;
+    
     border-bottom:1px dotted;
-    background:white;
+    margin-bottom:-1px;
+}
+
+ .table .start
+{border-left:1px solid black;
+    margin-left:-1px;
+border-right:1px dashed black;
+margin-right:-1px}
+
+ .table  .midrow
+{
+    border-right: 1px dashed black;
+    margin-right: -1px;
+}
+
+ .table .end
+{
+    border-right:1px solid black;
+    margin-right:-1px;
 }
 
 .table .headingrow tr
@@ -586,20 +616,9 @@ and open the template in the editor.
 
 }
 
-.table th
+.table .columns
 {
-    font-family:"abel";
-    font-size:11pt;
-    text-transform: uppercase;
-}
-
-.table td
-{
-    text-align:left;
-    font-size:10pt;
-    
-    border-right: 1px dashed black;
-    border-bottom: 1px dotted black;
+    display:table-row;
 }
 
 table p
@@ -632,6 +651,7 @@ table p
 .eotedice
 {font-family:'Eote Dice'}
 
+/* 'Switch' style checkboxes */
 
 .sheetswitch
 {
@@ -642,9 +662,9 @@ table p
 }
 
  .sheetswitch input
-{display:none}
+{display:none;}
 
-.sheetswitch .slider
+ .sheetSlider
 {
     position:absolute;
     cursor:pointer;
@@ -657,7 +677,7 @@ table p
     transition: .4s;
 }
 
-.sheetswitch .slider:before
+ .sheetSlider:before
 {
     position:absolute;
     content:"";
@@ -671,16 +691,68 @@ table p
     
 }
 
- input:checked + .slider
+ input:checked + .sheetSlider
 {background-color: #2196f3;}
 
-input:focus + .slider
+input:focus + .sheetSlider
 {box-shadow: 0 0 1px #2196F3}
 
-input:checked + .slider:before
+input:checked + .sheetSlider:before
 {-webkit-transform: translateX(26px);
 -ms-transform: translateX(26px);
 transform: translateX(26px)}
+
+/* small slider */
+
+.smallSwitch
+{
+    position: relative;
+    display:inline-block;
+    width:40px;
+    height:22px;
+}
+
+ .sheetswitch input
+{display:none;}
+
+ .smallSlider
+{
+    position:absolute;
+    cursor:pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:#ccc;
+    -webkit-transition:.4s;
+    transition: .4s;
+}
+
+ .smallSlider:before
+{
+    position:absolute;
+    content:"";
+    height:18px;
+    width:18px;
+    left:2px;
+    bottom:2px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: .4s;
+    
+}
+
+ input:checked + .smallSlider
+{background-color: #2196f3;}
+
+input:focus + .sheetSlider
+{box-shadow: 0 0 1px #2196F3}
+
+input:checked + .smallSlider:before
+{-webkit-transform: translateX(18px);
+-ms-transform: translateX(18px);
+transform: translateX(18px)}
+
 /* ---weapon card--- */
 
 .itemcard .thecardbg
@@ -742,7 +814,7 @@ transform: translateX(26px)}
 {
     font-family: "abel";
     font-size:11pt;
-    font-align:left;
+    text-align:left;
 }
 
 .itemcard .weapstats p

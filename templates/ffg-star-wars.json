@@ -596,9 +596,15 @@
                     "name": "Item Notes"
                 },
                 "weight": {
-                    "name": "Encumbrance",
-                    "current": 0
+                    "name": "Total Encumbrance",
+                    "current":0
                 },
+
+                "enc":{"name":"encumbrance",
+                     "current":0},
+                "qty":{"name":"Quantity",
+                     "current":1},
+
                 "rarity": {
                     "name": "Rarity",
                     "current": 0
@@ -612,8 +618,12 @@
                     "current": 0
                 },
                 "type": {
-                    "current": 0
+                    "current": "Item"
                 }
+            },
+
+            "tags":{"equipped":{"name":"equipped", "current":0}
+
             },
 
             "equip": {
@@ -645,7 +655,7 @@
                 },
                 "skill": {
                     "name": "skill",
-                    "current": 0
+                    "current": "Brawl"
                 },
                 "hp": {
                     "max": {
@@ -780,7 +790,18 @@
                 },
                 "range": {}
             },      
-            "_hud": {}
+            "_hud": {},
+            "_calc": [
+                {
+                    "target": "info.weight",
+                    "eq": "@enc*@qty",
+                    "cond": "@enc>0"
+                  },
+                  {
+                    "target": "info.weight",
+                    "cond": "@enc=0",
+                    "eq": "@qty*0.2"
+                  }]
         },
         "Force Power": {
             "_t": "i",
