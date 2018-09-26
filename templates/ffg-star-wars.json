@@ -98,7 +98,9 @@
                 },
                 "mdef": {},
                 "rdef": {},
-                "propool": {}
+                "propool": {},
+                "stimpaks":{"current":0},
+                "stimuse":{"current":5}
             },
             "skills": {
                 "general": {
