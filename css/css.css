@@ -575,7 +575,6 @@ and open the template in the editor.
 /* tables */
 .table
 {
-    display:table;
     border:1px solid black;
     background:white;
  
@@ -609,16 +608,12 @@ margin-right:-1px}
     margin-right:-1px;
 }
 
-.table .headingrow tr
+.table .shortname
 {
-    text-align:left;
-
-
-}
-
-.table .columns
-{
-    display:table-row;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
 }
 
 table p
