@@ -1,8 +1,7 @@
-
-
-
 <div class="flexrow weapontabs">
-    <tabs class="flexrow flexaround fit-x size4" tab-category='main-tab' tab-selected="alttext flexmiddle lrpadding smooth" tab-selected-style="height: 40px; width:100px; background-image:url(images/svg/tabbg-s.svg); font-family:'abel'; font-size:12pt; text-transform:uppercase ";'>
+    <tabs class="flexrow flexaround fit-x size4" tab-category='main-tab' tab-selected="alttext flexmiddle lrpadding smooth"
+        tab-selected-style="height: 40px; width:100px; background-image:url(images/svg/tabbg-s.svg); font-family:'abel'; font-size:12pt; text-transform:uppercase "
+        ;'>
         <tab class='flexmiddle link lrpadding cstab' primary="true">basic</tab>
         <tab class='flexmiddle link lrpadding cstab'>statistics</tab>
         <tab class="flexmiddle link lrpadding cstab">qualities</tab>
@@ -13,7 +12,7 @@
 <div class="flexcolumn" main-tab='basic'>
     <input type="text" class="itemname" target="info.name" />
     <div class='flexcolumn info'>
-        <ui name='ui_rawNotes'/>    
+        <ui name='ui_rawNotes' />
     </div>
 
 </div>
@@ -23,7 +22,7 @@
 
     <div class="flexrow flexaround mainStats" style="margin-bottom:3px">
         <div class="flexcolumn rtgbg">
-            <input target="weapon.dam"/>
+            <input target="weapon.dam" />
             <div class="rtglabel"> Damage</div>
         </div>
         <div class="flexcolumn rtgbg">
@@ -33,9 +32,10 @@
         </div>
     </div>
 
-    <div class ="flexcolumn greyborder-round" style="height:240px">
+    <div class="flexcolumn greyborder-round" style="height:240px">
 
-        <div class="flexrow weapstats"><p><b>Weapon Skill:</b></p> <select target ="weapon.skill">
+        <div class="flexrow weapstats">
+            <p><b>Weapon Skill:</b></p> <select target="weapon.skill">
 
                 <option>Brawl</option>
                 <option>Melee</option>
@@ -47,14 +47,18 @@
             </select>
         </div>
 
-        <div class="flexrow weapstats"><p><b> Range:</b></p> <select target="weapon.range">
+        <div class="flexrow weapstats">
+            <p><b> Range:</b></p> <select target="weapon.range">
                 <option value="0">Engaged</option>
                 <option value="1">Short</option>
-                <option value ="2"> Medium</option>
-                <option value ="3"> Long</option>
-                <option value ="4"> Extreme</option>
-            </select></div>
-        <div class="flexrow weapstats"><p><b>Hardpoints:</b></p><input type="text" target="weapon.hardpoints.max"/></div>
+                <option value="2"> Medium</option>
+                <option value="3"> Long</option>
+                <option value="4"> Extreme</option>
+            </select>
+        </div>
+        <div class="flexrow weapstats">
+            <p><b>Hardpoints:</b></p><input type="text" target="weapon.hardpoints.max" />
+        </div>
         <div class="flexrow flexaround">
             <div class="flexcolumn propertycol">
                 <p><b>Ranked Qualities</b></p>
@@ -70,7 +74,7 @@
                 <p><b>Un-ranked Qualities</b></p>
                 <div class="flexrow scroll-y ranked-property">
                     <list target="weapon.unranked_properties">
-                    <div cond="eval{@%path%>0}">eval{@%path%.name}</div>
+                        <div cond="eval{@%path%>0}">eval{@%path%.name}</div>
                     </list>
                 </div>
             </div>
@@ -81,17 +85,17 @@
 <div class="flexrow" main-tab="qualities" style="padding-top:20px">
     <div class="flexcolumn greyborder-round" style="width:50%; height:275px; margin:2px">
         <p><b>Ranked Qualities</b></p>
-        <div class="flexcolumn scroll-y table tablebdr" style="border:1px black solid">
+        <div class="flexcolumn scroll-y table" style="border:1px black solid; max-height:250px">
             <bank target="weapon.ranked_properties">
                 <div class="flexrow">
-                    <div class=" flexrow tablerow" style="min-width:80%">
+                    <div class=" flexrow tablerow start" style="min-width:80%">
                         <p>eval{@%path%.name}</p>
 
                     </div>
-                    <div class="flexrow tablerow" style="width:100%">
+                    <div class="flexrow tablerow end" style="width:100%">
                         <input type="text" target="eval{weapon.ranked_properties.%index%}" style="width:30px; margin:2px" />
                     </div>
-                </div>        
+                </div>
             </bank>
         </div>
 
@@ -99,19 +103,18 @@
 
     <div class="flexcolumn greyborder-round" style="width:50%; height:275px; margin:2px">
         <p><b> Unranked Qualities</b></p>
-        <div class="flexcolumn scroll-y table tablebdr" style="border:1px black solid">
+        <div class="flexcolumn scroll-y table" style="border:1px black solid; max-height:250px">
             <bank target="weapon.unranked_properties">
                 <div class="flexrow">
-                    <div class=" flexrow tablerow" style="min-width:80%">
+                    <div class=" flexrow tablerow start" style="min-width:80%">
                         <p>eval{@inventory.%index%.name}</p>
 
                     </div>
-                    <div class="flexrow tablerow" style="width:100%">
+                    <div class="flexrow tablerow end" style="width:100%">
                         <input type="checkbox" target="eval{weapon.unranked_properties.%index%}" check="1" uncheck="0" />
                     </div>
-                </div>        
+                </div>
             </bank>
         </div>
     </div>
 </div>
-
