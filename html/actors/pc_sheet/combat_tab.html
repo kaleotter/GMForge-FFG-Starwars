@@ -1,37 +1,39 @@
 <div class="flexrow">
     <!--injury and status side?-->
-    <div class="flexcolumn greyborder-round" style="border:none; width:40%">
+    <div class="flexcolumn greyborder-round" style="border:none; width:35%">
 
         <div class="flexcolumn">
             <!--Stimpack counter-->
+            <!--TODO:
+            1. Need to add a settings dialogue to switch between droid stimpacks and emergency repair kits, Maybe just a dropdown?-->
             <div class="flexrow">
                 <label>Healing remaining: </label><input style="width:50px" type="text" target="counters.stimpaks" />
             </div>
             <div class="flexrow">
                 <div class="stimuse">
-                    <input type="checkbox" onClick="false" target="counters.stimuse" check=1 uncheck=0 isChecked='eval{@c.counters.stimuse > 0}'/>
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=1 uncheck=0 isChecked='eval{@c.counters.stimuse > 0}' />
                     <span class="pip"></span>
                 </div>
                 <div class="stimuse">
-                    <input type="checkbox" onClick="false" target="counters.stimuse" check=2 uncheck=1 isChecked="eval{@c.counters.stimuse > 1}"/>
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=2 uncheck=1 isChecked="eval{@c.counters.stimuse > 1}" />
                     <span class="pip"></span>
                 </div>
 
                 <div class="stimuse">
-                    <input type="checkbox" onClick="false" target="counters.stimuse" check=3 uncheck=2 isChecked="eval{@c.counters.stimuse > 2}"/>
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=3 uncheck=2 isChecked="eval{@c.counters.stimuse > 2}" />
                     <span class="pip"></span>
                 </div>
                 <div class="stimuse">
-                    <input type="checkbox" onClick="false" target="counters.stimuse" check=4 uncheck=3 isChecked="eval{@c.counters.stimuse > 3}"/>
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=4 uncheck=3 isChecked="eval{@c.counters.stimuse > 3}" />
                     <span class="pip"></span>
                 </div class="stimuse">
                 <div class="stimuse">
-                    <input type="checkbox" onClick="false" target="counters.stimuse" check=5 uncheck=4 isChecked="eval{@c.counters.stimuse > 4}"/>
+                    <input type="checkbox" onClick="false" target="counters.stimuse" check=5 uncheck=4 isChecked="eval{@c.counters.stimuse > 4}" />
                     <span class="pip"></span>
                 </div>
                 <div class="sheetbutton">Heal (eval{@c.counters.stimuse})
                     <click>
-                        <setAttr target="counters.wounds.current" value="eval{@c.counters.wounds.current + @c.counters.stimuse}"/>
+                        <setAttr target="counters.wounds.current" value="eval{@c.counters.wounds.current + @c.counters.stimuse}" />
                         <setAttr target="counters.stimuse.current" value="eval{@c.counters.stimuse - 1}" cond="eval{@c.counters.stimuse>0}" />
                         <setAttr target="counters.stimpaks.current" value="eval{@c.counters.stimpaks - 1}" cond="eval{@c.counters.stimpaks>0}" />
 
@@ -44,9 +46,9 @@
     </div>
 
     <!--equipment and combat options side-->
-    <div class ="flexcolumn greyborder-round" style="border:none">
+    <div class="flexcolumn greyborder-round" style="border:none; width:100%">
         <div>
-            <!--equipped weapons-->
+            <!--equipped weapons table-->
             <div class="flexcolumn table">
                 <div class="flexrow tableheadings">
                     <div style="width:100px">Name</div>
@@ -54,14 +56,34 @@
                     <div style="width:100px">Range</div>
                     <div style="width:50px">Dam</div>
                     <div style="width:50px">Crit</div>
-                    <div style="width:50px">special</div>
+                    <div style="width:50px">quals</div>
                     <div></div>
-                    
+
                 </div>
                 <bank target="inventory">
-                    <div class="flexrow" cond="eval{'@%path%.info.type'=='Weapon' && @%path%.tags.equipped==1}"> We found guns</div>
-                </bank>
+                    <div class="flexrow" cond="eval{'@%path%.info.type'=='Weapon' && @%path%.tags.equipped==1}">
+                        <div class="tablerow start" style="width:100px">eval{@%path%.info.name}</div>
+                        <div class="tablerow midrow" style="width:100px">eval{@%path%.weapon.skill}</div>
+                        <div class="tablerow midrow" style="width:100px">eval{@%path%.weapon.rng}</div>
+                        <div class="tablerow midrow" style="width:50px">eval{@%path%.weapon.dam}</div>
+                        <div class="tablerow midrow" style="width:50px">eval{@%path%.weapon.crit}</div>
+                        <div class="tablerow midrow" style="width:50px">
+                            <div class="glyphicon glyphicon-info-sign link">
+                                <!--display weapon qualities here-->
+                            </div>
+                        </div>
+                        <div class="tablerow rowend"></div>
+                        <div>
+                            <label class="smallSwitch"><input type="checkbox" target="inventory.%index%.tags.equipped" check="1"
+                                uncheck="0" isChecked="eval{@c.inventory.%index%.tags.equipped.current==1}">
+                            <span class="smallSlider"></span>
+                        </label>
+                        </div>
+
+                    </div>
             </div>
+            </bank>
         </div>
     </div>
+</div>
 </div>

@@ -634,7 +634,7 @@
             "tags": {
                 "equipped": {
                     "name": "equipped",
-                    "current": 1
+                    "current": 0
                 }
             },
             "equip": {
