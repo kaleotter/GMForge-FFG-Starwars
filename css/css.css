@@ -582,6 +582,14 @@ input:checked + .pip
 
 }
 
+.sheetbutton .disabled
+{
+    color:red;
+    background:darkgrey;
+
+    border: 1.5px darkgrey inset;    
+}
+
 .greyborder-round
 {
     background:rgba(128,128,128,0.5);
@@ -598,6 +606,7 @@ input:checked + .pip
 
     border: 1.5px #516148 inset;
 }
+
 .abdie
 {
     background-image:url(/images/svg/abil.svg);

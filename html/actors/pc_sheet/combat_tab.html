@@ -5,7 +5,7 @@
         <div class="flexcolumn">
             <!--Stimpack counter-->
             <!--TODO:
-            1. Need to add a settings dialogue to switch between droid stimpacks and emergency repair kits, Maybe just a dropdown?-->
+            1. need to order and style into its own dialog-->
             <div class=flexrow:>
                 <label>Healing type:</label><select target="info.healing">
                     <option>Stimpak</option>
@@ -37,11 +37,12 @@
                     <input type="checkbox" onClick="false" target="counters.stimuse" check=5 uncheck=4 isChecked="eval{@c.counters.stimuse > 4}" />
                     <span class="pip"></span>
                 </div>
-                <div class="flexrow sheetbutton" cond="eval{c.counters.stimpaks>0 || @c.counters.stimuse>0}">Heal: (
-                    <div cond="eval{'@c.info.healing'=='Stimpak'}">eval{@c.counters.stimuse.current}</div>
-                    <div cond="eval{'@c.info.healing'=='Repair Patch'}">3</div>
-                    )
-                </div>
+            </div>
+            <div class="flexrow sheetbutton" cond="eval{c.counters.stimpaks>0 || @c.counters.stimuse>0}">Heal: (
+                <div cond="eval{'@c.info.healing'=='Stimpak'}">eval{@c.counters.stimuse.current}</div>
+                <div cond="eval{'@c.info.healing'=='Repair Patch'}">3</div>
+                )
+
                 <click>
 
                     <setAttr target="counters.stimuse.current" value="eval{@c.counters.stimuse - 1}" cond="eval{@c.counters.stimuse>0}" />
