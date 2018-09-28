@@ -50,7 +50,8 @@
                 },
                 "specs": {
                     "current": "None"
-                }
+                },
+                "healing":{"current":"Stimpak"}
             },
             "_hud": {},
             "_flags": {},
