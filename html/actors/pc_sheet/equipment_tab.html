@@ -1,77 +1,79 @@
-<div class="flexcolumn greyborder-round" style="width:100%">
+<div class="sheet">
+    <div class="flexcolumn greyborder-round" style="width:100%">
 
-    <div class="flexcolumn">
-        <p>Add new Gear</p>
-        <div class="glyphicon glyphicon-plus link">
-            <click>
-                <create type="ITEM" target="inventory" />
-            </click>
-        </div>
-        <div class="flexcolumn table">
-            <div class="flexrow" style="border-bottom: 1px dotted black; margin-bottom:-1px">
-                <div class="tableheading" style="min-width: 100px">Image</div>
-                <div class="tableheading" style="min-width: 50px">Qty</div>
-                <div class="tableheading" style="min-width: 30px">Enc</div>
-                <div class="tableheading" style="min-width: 150px">Name</div>
-                <div class="tableheading" style="min-width: 300px">Summary</div>
-                <div class="tableheading" style="min-width: 64px">Equip</div>
-                <div class="tableheading" style="min-width:100%"></div>
+        <div class="flexcolumn">
+            <p>Add new Gear</p>
+            <div class="glyphicon glyphicon-plus link">
+                <click>
+                    <create type="ITEM" target="inventory" />
+                </click>
             </div>
-            <div class="flexcolumn columns" style="width:100%; border:1px black solid">
-                <bank target="inventory">
-                    <div class="flexrow">
-                        <div class="flexrow tablerow start" style="min-width:100px">
-                                <ui name='ui_image' scope-lookup="inventory.%index%.info.img" scope-fit='cover'/>
-                        </div>
-                        <div class="flexrow tablerow midrow" style="width:50px">
-                            <input pattern="[0-9]" target="inventory.%index%.info.qty" style="width: 30px" />X
-                        </div>
-                        <div class="flexrow tablerow midrow" style="min-width:30px">eval{@%path%.info.weight}</div>
-                        <div class="flexrow tablerow midrow" style="min-width: 150px">eval{'@%path%.info.name.current'}</div>
-                        <div class="flexrow tablerow midrow" style="min-width:300px">
-                            <div cond="eval{'@%path%.info.type'=='Weapon'}">
-                                <div><b>Skill: </b>eval{@%path%.weapon.skill} ; <b>Damage:</b>Eval{@%path%.weapon.dam}
-                                    ; <b>Crit:</b>
-                                    eval{@%path%.weapon.crit}</div>
+            <div class="flexcolumn table">
+                <div class="flexrow" style="border-bottom: 1px dotted black; margin-bottom:-1px">
+                    <div class="tableheading" style="min-width: 100px">Image</div>
+                    <div class="tableheading" style="min-width: 50px">Qty</div>
+                    <div class="tableheading" style="min-width: 30px">Enc</div>
+                    <div class="tableheading" style="min-width: 150px">Name</div>
+                    <div class="tableheading" style="min-width: 300px">Summary</div>
+                    <div class="tableheading" style="min-width: 64px">Equip</div>
+                    <div class="tableheading" style="min-width:100%"></div>
+                </div>
+                <div class="flexcolumn columns" style="width:100%; border:1px black solid">
+                    <bank target="inventory">
+                        <div class="flexrow">
+                            <div class="flexrow tablerow start" style="min-width:100px">
+                                <ui name='ui_image' scope-lookup="inventory.%index%.info.img" scope-fit='cover' />
                             </div>
+                            <div class="flexrow tablerow midrow" style="width:50px">
+                                <input pattern="[0-9]" target="inventory.%index%.info.qty" style="width: 30px" />X
+                            </div>
+                            <div class="flexrow tablerow midrow" style="min-width:30px">eval{@%path%.info.weight}</div>
+                            <div class="flexrow tablerow midrow" style="min-width: 150px">eval{'@%path%.info.name.current'}</div>
+                            <div class="flexrow tablerow midrow" style="min-width:300px">
+                                <div cond="eval{'@%path%.info.type'=='Weapon'}">
+                                    <div><b>Skill: </b>eval{@%path%.weapon.skill} ; <b>Damage:</b>Eval{@%path%.weapon.dam}
+                                        ; <b>Crit:</b>
+                                        eval{@%path%.weapon.crit}</div>
+                                </div>
 
-                            <div cond="eval{'@%path%.info.type'=='Armor'}">
+                                <div cond="eval{'@%path%.info.type'=='Armor'}">
 
-                                <div><b>soak: </b>eval{@%path%.armor.soak}; <b>Defence (M|R): </b>eval{@%path%.equip.mdef}
-                                    |
-                                    eval{@%path%.equip.rdef};</div>
+                                    <div><b>soak: </b>eval{@%path%.armor.soak}; <b>Defence (M|R): </b>eval{@%path%.equip.mdef}
+                                        |
+                                        eval{@%path%.equip.rdef};</div>
 
+                                </div>
+
+                                <div class="description1line" cond="eval{'@%path%.info.type'=='Item'}" style="max-width:300px">
+                                    traverse{inventory.%index%.info.notes.current}
+
+                                </div>
                             </div>
-
-                            <div class="description1line" cond="eval{'@%path%.info.type'=='Item'}" style="max-width:300px">
-                                traverse{inventory.%index%.info.notes.current}
-
+                            <div class='flexrow tablerow midrow' style="min-width:64px;">
+                                <div cond="eval{'@%path%.info.type'!='Item'}">
+                                    <label class="smallSwitch"><input type="checkbox" target="inventory.%index%.tags.equipped"
+                                            check="1" uncheck="0" isChecked="eval{@c.inventory.%index%.tags.equipped.current==1}">
+                                        <span class="smallSlider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flexrow tablerow end" style="width:100%">
+                                <div class="glyphicon glyphicon-edit link" style="margin-right:3px">
+                                    <click>
+                                        <change target="inventory.%index%" />
+                                    </click>
+                                </div>
+                                <div class="glyphicon glyphicon-trash link">
+                                    <click>
+                                        <delete target="inventory.%index%" />
+                                    </click>
+                                </div>
                             </div>
                         </div>
-                        <div class='flexrow tablerow midrow' style="min-width:64px;">
-                            <div cond="eval{'@%path%.info.type'!='Item'}">
-                                <label class="smallSwitch"><input type="checkbox" target="inventory.%index%.tags.equipped" check="1"
-                                        uncheck="0" isChecked="eval{@c.inventory.%index%.tags.equipped.current==1}">
-                                    <span class="smallSlider"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="flexrow tablerow end" style="width:100%">
-                            <div class="glyphicon glyphicon-edit link" style="margin-right:3px">
-                                <click>
-                                    <change target="inventory.%index%" />
-                                </click>
-                            </div>
-                            <div class="glyphicon glyphicon-trash link">
-                                <click>
-                                    <delete target="inventory.%index%" />
-                                </click>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                </bank>
+
             </div>
-            </bank>
-
         </div>
     </div>
 </div>

@@ -1,21 +1,23 @@
-<div class="flexrow">
+<div class="flexrow sheet health">
     <!--injury and status side?-->
-    <div class="flexcolumn greyborder-round" style="border:none; width:35%">
+    <div class="flexcolumn greyborder-round" style="border:none; width:45%; padding:5px; padding-bottom:10px; padding-top:10px">
 
-        <div class="flexcolumn">
+        <h1>healing</h1>
+
+        <div class="flexcolumn" style="border:1px black solid; padding:1px; border-radius:5px">
             <!--Stimpack counter-->
             <!--TODO:
             1. need to order and style into its own dialog-->
-            <div class=flexrow:>
-                <label>Healing type:</label><select target="info.healing">
+            <div class=flexrow style="margin-bottom:3px;">
+                <label style="width:120px">Healing type:</label><select target="info.healing" style="width:100px;">
                     <option>Stimpak</option>
                     <option>Repair Patch</option>
                 </select>
             </div>
-            <div class="flexrow">
-                <label>Healing remaining: </label><input style="width:50px" type="text" target="counters.stimpaks" />
+            <div class="flexrow" style="margin-bottom:3px">
+                <label style="width:120px">Healing remaining: </label><input style="width:100px" type="text" target="counters.stimpaks" />
             </div>
-            <div class="flexrow">
+            <div class="flexrow flexmiddle">
                 <div class="stimuse">
                     <input type="checkbox" onClick="false" target="counters.stimuse" check=1 uncheck=0 isChecked='eval{@c.counters.stimuse > 0}' />
                     <span class="pip"></span>
@@ -38,30 +40,98 @@
                     <span class="pip"></span>
                 </div>
             </div>
-            <div class="flexrow sheetbutton" cond="eval{c.counters.stimpaks>0 || @c.counters.stimuse>0}">Heal: (
-                <div cond="eval{'@c.info.healing'=='Stimpak'}">eval{@c.counters.stimuse.current}</div>
-                <div cond="eval{'@c.info.healing'=='Repair Patch'}">3</div>
-                )
+            <div class="flexrow flexmiddle">
+                <div class="flexrow sheetbutton " style="width:33%" cond="eval{@c.counters.stimpaks > 0}"> Heal: (
+                    <div cond="eval{'@c.info.healing'=='Stimpak' && @c.counters.stimuse>0}">eval{@c.counters.stimuse.current}</div>
+                    <div cond="eval{'@c.info.healing'=='Repair Patch' && @c.counters.stimuse>0}">3</div>
+                    <div cond="eval{@c.counters.stimuse == 0}">0</div>
+                    )
 
-                <click>
+                    <click>
 
-                    <setAttr target="counters.stimuse.current" value="eval{@c.counters.stimuse - 1}" cond="eval{@c.counters.stimuse>0}" />
-                    <setAttr target="counters.stimpaks.current" value="eval{@c.counters.stimpaks - 1}" cond="eval{@c.counters.stimpaks>0}" />
-                    <setAttr target="counters.wounds.current" value="eval{@c.counters.wounds.current + @c.counters.stimuse}"
-                        cond="eval{'@c.info.healing'=='Stimpak'}" />
-                    <setAttr target="counters.wounds.current" value="eval{@c.counters.wounds.current +3}" cond="eval{'@c.info.healing'=='Repair Patch'}" />
+                        <setAttr target="counters.stimuse.current" value="eval{@c.counters.stimuse - 1}" cond="eval{@c.counters.stimuse>0}" />
+                        <setAttr target="counters.stimpaks.current" value="eval{@c.counters.stimpaks - 1}" cond="eval{@c.counters.stimpaks>0}" />
+                        <setAttr target="counters.wounds.current" value="eval{(@c.counters.wounds.current + @c.counters.stimuse)|@c.counters.wounds.max}"
+                            cond="eval{'@c.info.healing'=='Stimpak'}" />
+                        <setAttr target="counters.wounds.current" value="eval{(@c.counters.wounds.current +3)|@c.counters.wounds.max}"
+                            cond="eval{'@c.info.healing'=='Repair Patch'}" />
 
-                </click>
+                        </lick>
+                </div>
+
+                <div class="sheetbutton" style="width:33%">
+                    Rest
+
+                    <click>
+                        <setAttr target="counters.wounds" value="eval{(@c.counters.wounds.current +1)|@c.counters.wounds.max}" />
+                        <setAttr target="counters.strain" value="eval{@c.counters.strain.max}" />
+                        <setAttr target="counters.stimuse" value="5" />
+
+                    </click>
+                </div>
+                <div class="sheetbutton" style="width:33%">
+                    Treatment
+
+                    <click>
+                        <prompt>
+                            <!-- Medical Treatment Prompt goes here -->
+                        </prompt>
+                    </click>
+                </div>
             </div>
+        </div>
+        <h1>Critical Injuries</h1>
+        <div class="flexrow link"><label style="margin-right:2px">add new critical </label>
+            <div class="glyphicon glyphicon-plus"></div>
+
+            <click>
+                <create type="CRIT" target="crits"></create>
+            </click>
+        </div>
+        <div class="flexcolumn table">
+            <div class="flexrow tableheadings">
+                <label style="width:50px">Roll</label><label>Severity</label>
+            </div>
+            <bank target="crits">
+                <div class="flexrow">
+                    <div class="tablerow start"><input target="crits.%index%.info.name" style="width:50px"></div>
+                    <div class="flexrow tablerow midrow">
+                        <div class="glyphicon glyphicon-plus link">
+                            <click>
+                                <setAttr target="crits.%index%.info.severity" value="eval{(@c.crits.%index%.info.severity + 1)|5}" />
+                            </click>
+                        </div>
+                        <div class="flexrow" style="border:1px grey dotted">
+                            <div class="eotedice" style="color:purple" cond="eval{@%path%.info.severity>0}">d</div>
+                            <div class="eotedice" style="color:purple" cond="eval{@%path%.info.severity>1}">d</div>
+                            <div class="eotedice" style="color:purple" cond="eval{@%path%.info.severity>2}">d</div>
+                            <div class="eotedice" style="color:purple" cond="eval{@%path%.info.severity>3}">d</div>
+                            <div class="eotedice" style="color:purple" cond="eval{@%path%.info.severity>4}">d</div>
+                        </div>
+
+                        <div class="glyphicon glyphicon-minus link">
+                            <click>
+                                <setAttr target="crits.%index%.info.severity" value="eval{(@c.crits.%index%.info.severity - 1)_1}" />
+                            </click>
+                        </div>
+
+
+                    </div>
+                    <div class="flexrow tablerow rowend" style=width:100%>
+                        <div class="glyphicon glyphicon-ok link">Heal</div>
+                    </div>
+            </bank>
         </div>
 
     </div>
-
 </div>
+
+
 
 <!--equipment and combat options side-->
 <div class="flexcolumn greyborder-round" style="border:none; width:100%">
     <div>
+        <h1>Equipped Weapons</h1>
         <!--equipped weapons table-->
         <div class="flexcolumn table">
             <div class="flexrow tableheadings">
@@ -89,7 +159,9 @@
                             </click>
                         </div>
                     </div>
-                    <div class="tablerow rowend"></div>
+                    <div class="tablerow rowend">
+                        <div class="glyphicon glyphicon-trash link"></div>
+                    </div>
                     <div>
                         <label class="smallSwitch"><input type="checkbox" target="inventory.%index%.tags.equipped"
                                 check="1" uncheck="0" isChecked="eval{@c.inventory.%index%.tags.equipped.current==1}">
@@ -101,6 +173,24 @@
         </div>
         </bank>
     </div>
-</div>
-</div>
+    <h1>Equipped Armor</h1>
+    <div class="table">
+        <div class="heading flexrow">
+            <div>Name</div>
+            <div>Soak</div>
+            <div>M Def</div>
+            <div>R Def</div>
+            <div>equipped</div>
+            <div>active</div>
+        </div>
+
+        <bank target="inventory">
+            <div class= " flexrow tablerow" cond="eval{'@%path%.info.type'=='Armor' && @%path%.tags.equipped==1}">
+                <div class="tablerow start">eval{@%path%.info.name}</div>
+                <div class="tablerow midrow">eval{@%path%.equip.soak}</div>
+                <div class="tablerow midrow">eval{@%path%.equip.mdef}</div>
+                <div class="tablerow midrow">eval{@%path%.equip.rdef}</div>
+            </div>
+        </bank>
+    </div>
 </div>

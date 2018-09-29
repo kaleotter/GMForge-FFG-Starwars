@@ -51,7 +51,9 @@
                 "specs": {
                     "current": "None"
                 },
-                "healing":{"current":"Stimpak"}
+                "healing": {
+                    "current": "Stimpak"
+                }
             },
             "_hud": {},
             "_flags": {},
@@ -106,7 +108,8 @@
                 },
                 "stimuse": {
                     "name": "uses",
-                    "current": 5
+                    "current": 5,
+                    "max": 5
                 }
             },
             "skills": {
@@ -550,7 +553,8 @@
                 },
                 "inventory": [],
                 "talents": [],
-                "powers": []
+                "powers": [],
+                "crit":[]
             }
         },
         "NPC": {
@@ -847,6 +851,25 @@
                     "name": "Notes"
                 }
             }
+        },
+        "crit": {
+            "_t": "i",
+            "_type": "crit",
+            "info": {
+                "name": {
+                    "name": "Roll",
+                    "current": "Crit Name"
+                },
+                "img": {
+                    "name": "Art"
+                },
+                "notes": {
+                    "name": "Notes"
+                },
+                "severity":{"current":1},
+                "active":{"current":1}
+            },
+            "_drop": "crits"
         },
         "Weapon": {
             "_t": "i",
