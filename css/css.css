@@ -183,6 +183,23 @@ font-size:11pt
     background-color:rgba(255,255,255,0)
 }
 
+.derivedsingle .fixedVal
+{
+    position: relative;
+    top: 3px;
+
+    height: 50px;
+    width:80%;
+
+    font-family:'abel';
+    font-size:28px;
+    text-align:center;
+
+    border:none;
+
+    background-color:rgba(128,128,128,0.5)
+}
+
 /*dual derived attributes*/
 .deriveddbl
 {

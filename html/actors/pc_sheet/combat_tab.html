@@ -394,6 +394,9 @@
                             Worn
                         <click>
                             <setAttr target="info.activeArmor" value="none" />
+                            <setAttr target="info.soak.modifiers.armor" value="0"/>
+                            <setAttr target="counters.mdef.modifiers.armor" value="0"/>
+                            <setAttr target="counters.rdef.modifiers.armor" value="0"/>
                         </click>
                     </div>
 
@@ -403,6 +406,12 @@
                         Wear
                         <click>
                             <setAttr target="info.activeArmor" value="eval{%index%}" />
+                            <setAttr target="counters.soak.modifiers.armor" value="0"/>
+                            <setAttr target="counters.soak.modifiers.armor" value="@%path%.equip.armor"/>
+                            <setAttr target="counters.mdef.modifiers.armor" value="0"/>
+                            <setAttr target="counters.mdef.modifiers.armor" value="@%path%.equip.mdef"/>
+                            <setAttr target="counters.rdef.modifiers.armor" value="0"/>
+                            <setAttr target="counters.rdef.modifiers.armor" value="@%path%.equip.rdef"/>
                         </click>
                     </div>
                 </div>

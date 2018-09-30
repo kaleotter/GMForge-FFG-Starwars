@@ -98,7 +98,8 @@
                     "max": {}
                 },
                 "soak": {
-                    "name": "soak value"
+                    "name": "soak value",
+                    "current":0
                 },
                 "mdef": {},
                 "rdef": {},
