@@ -155,7 +155,16 @@
                         <div class="glyphicon glyphicon-info-sign link">
                             <!--display weapon qualities here-->
                             <click>
-
+                                <prompt>
+                                    <div class="flexcolumn greyborder-round">
+                                        <label>Ranked Qualities</label>
+                                        <bank target="%path%.weapon.ranked_properties">
+                                            <div>
+                                                <p>Eval{@%path%.name} | Eval{@%path%}</p>
+                                            </div>
+                                        </bank>
+                                    </div>
+                                </prompt>
                             </click>
                         </div>
                     </div>
