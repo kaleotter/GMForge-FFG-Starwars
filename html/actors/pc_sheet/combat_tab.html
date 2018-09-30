@@ -137,7 +137,7 @@
             <div class="flexrow tableheadings">
                 <div style="width:100px">Name</div>
                 <div style="width:100px">Skill</div>
-                <div style="width:100px">Range</div>
+                <div style="width:50px">Range</div>
                 <div style="width:50px">Dam</div>
                 <div style="width:50px">Crit</div>
                 <div style="width:50px">quals</div>
@@ -148,23 +148,205 @@
                 <div class="flexrow" cond="eval{'@%path%.info.type'=='Weapon' && @%path%.tags.equipped==1}">
                     <div class="tablerow start" style="width:100px">eval{@%path%.info.name}</div>
                     <div class="tablerow midrow" style="width:100px">eval{@%path%.weapon.skill}</div>
-                    <div class="tablerow midrow" style="width:100px">eval{@%path%.weapon.rng}</div>
+                    <div class="tablerow midrow" style="width:50px">eval{@%path%.weapon.rng}</div>
                     <div class="tablerow midrow" style="width:50px">eval{@%path%.weapon.dam}</div>
                     <div class="tablerow midrow" style="width:50px">eval{@%path%.weapon.crit}</div>
                     <div class="tablerow midrow" style="width:50px">
                         <div class="glyphicon glyphicon-info-sign link">
                             <!--display weapon qualities here-->
                             <click>
-                                <prompt>
-                                    <div class="flexcolumn greyborder-round">
-                                        <label>Ranked Qualities</label>
-                                        <bank target="%path%.weapon.ranked_properties">
-                                            <div>
-                                                <p>Eval{@%path%.name} | Eval{@%path%}</p>
-                                            </div>
-                                        </bank>
+                                <popout width="150" height="auto" title="Weapon Qualities">
+                                    <div class="flexrow greyborder-round">
+                                        <div class="flexrow" cond="eval{@c.inventory.%index%.weapon.ranked_properties.acc>0}">
+                                            <label style="width:50px">eval{@%path%.weapon.ranked_properties.acc.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.acc}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.auto>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.auto.name}</label>
+                                        </div>
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.blast>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>eval{@%path%.weapon.ranked_properties.blast.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.blast}</p>
+                                        </div>
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.breach>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.breach.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.breach}</p>
+                                        </div>
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.burn>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.burn.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.burn}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.conc>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.conc.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.conc}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.cumb>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.cumb.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.cumb}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.cort>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.unranked_properties.cort.name}</label>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.def>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.def.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.def}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.defl>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.defl.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.defl}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.diso>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.diso.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.diso}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.ensn>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.ensn.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.ensn}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.guid>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.guid.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.guid}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.ina>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.ina.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.ina}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.inf>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.unranked_properties.cort.inf}</label>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.ion>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.unranked_properties.cort.ion}</label>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.knock>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.unranked_properties.cort.knock}</label>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.lam>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.lam.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.lam}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.lnk>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.lnk.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.lnk}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.pie>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.pie.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.pie}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.prep>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.prep.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.prep}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.slo>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.slo.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.slo}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.stun>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.stun.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.stun}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.stund>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.unranked_properties.cort.stund}</label>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.sund>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.unranked_properties.cort.sund}</label>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.unranked_properties.sup>0}">
+                                            <p>,&nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.unranked_properties.cort.sup}</label>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.tract>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.tract.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.tract}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.unw>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.unw.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.unw}</p>
+                                        </div>
+
+                                        <div class="flexrow" cond="eval{@%path%.weapon.ranked_properties.vic>0}">
+                                            <p>, &nbsp;</p>
+                                            <label>
+                                                eval{@%path%.weapon.ranked_properties.vic.name}&nbsp;</label>
+                                            <p>eval{@%path%.weapon.ranked_properties.vic}</p>
+                                        </div>
                                     </div>
-                                </prompt>
+                                </popout>
                             </click>
                         </div>
                     </div>
@@ -185,21 +367,48 @@
     <h1>Equipped Armor</h1>
     <div class="table">
         <div class="heading flexrow">
-            <div>Name</div>
-            <div>Soak</div>
-            <div>M Def</div>
-            <div>R Def</div>
-            <div>equipped</div>
-            <div>active</div>
+            <div style="min-width:150px">Name</div>
+            <div style="min-width:50px">Soak</div>
+            <div style="min-width:50px">M Def</div>
+            <div style="min-width:50px">R Def</div>
+            <div style="min-width:80px">equipped</div>
+            <div style="min-width:80px">active</div>
         </div>
 
         <bank target="inventory">
-            <div class= " flexrow tablerow" cond="eval{'@%path%.info.type'=='Armor' && @%path%.tags.equipped==1}">
-                <div class="tablerow start">eval{@%path%.info.name}</div>
-                <div class="tablerow midrow">eval{@%path%.equip.soak}</div>
-                <div class="tablerow midrow">eval{@%path%.equip.mdef}</div>
-                <div class="tablerow midrow">eval{@%path%.equip.rdef}</div>
+
+            <div class=" flexrow tablerow" cond="eval{'@%path%.info.type'=='Armor' && @%path%.tags.equipped==1}">
+                <div class="tablerow start" style="width:150px">eval{@%path%.info.name}</div>
+                <div class="tablerow start" style="width:50px">eval{@%path%.equip.soak}</div>
+                <div class="tablerow midrow" style="width:50px">eval{@%path%.equip.mdef}</div>
+                <div class="tablerow midrow" style="width:50px">eval{@%path%.equip.rdef}</div>
+                <div class="tablerow midrow" style="width:80px">
+                    <label class="smallSwitch"><input type="checkbox" target="inventory.%index%.tags.equipped" check="1"
+                            uncheck="0" isChecked="eval{@c.inventory.%index%.tags.equipped.current==1}">
+                        <span class="smallSlider"></span>
+                    </label>
+                </div>
+
+                <div class="tablerow end" style="width:80px">
+                    <div class="sheetbutton" cond="eval{'@c.info.activeArmor'=='%index%'}">
+                            Worn
+                        <click>
+                            <setAttr target="info.activeArmor" value="none" />
+                        </click>
+                    </div>
+
+
+
+                    <div class="sheetbutton" cond="eval{'@c.info.activeArmor' !='%index%' }">
+                        Wear
+                        <click>
+                            <setAttr target="info.activeArmor" value="eval{%index%}" />
+                        </click>
+                    </div>
+                </div>
             </div>
-        </bank>
+
     </div>
+    </bank>
+</div>
 </div>

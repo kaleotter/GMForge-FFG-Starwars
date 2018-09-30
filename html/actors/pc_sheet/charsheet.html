@@ -49,7 +49,12 @@
         <div class='flexcolumn derivedsingle'>
             <div class='title'>soak value
             </div>
-            <input target='counters.soak'>
+            <input target='counters.soak'/>
+            <div class="flexrow flexmiddle lowercontainer title link" Style="color:black; text-align:center">Modifiers
+
+                    <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.soak" scope-icon="list-alt">
+
+            </div>
         </div>
 
         <div class='flexcolumn deriveddbl'>
@@ -86,8 +91,8 @@
                 <input target='counters.rdef' >
             </div>
             <div class='flexrow lowercontainer title'>
-                <div class=' left'>melee</div>
-                <div class ='right'>ranged</div>
+                <div class=' left'><ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.mdef" scope-icon="list-alt">melee</ui></div>
+                <div class ='right'><ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.rdef" scope-icon="list-alt">ranged</ui></div>
 
             </div>
         </div>

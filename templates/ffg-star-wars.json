@@ -53,7 +53,8 @@
                 },
                 "healing": {
                     "current": "Stimpak"
-                }
+                },
+                "activeArmor":{"current":"none"}
             },
             "_hud": {},
             "_flags": {},
@@ -554,7 +555,7 @@
                 "inventory": [],
                 "talents": [],
                 "powers": [],
-                "crit":[]
+                "crit": []
             }
         },
         "NPC": {
@@ -667,7 +668,7 @@
                 },
                 "rng": {
                     "name": "range",
-                    "current": 0
+                    "current": "Eng"
                 },
                 "skill": {
                     "name": "skill",
@@ -684,10 +685,6 @@
                 "ranked_properties": {
                     "acc": {
                         "name": "Accurate",
-                        "current": 0
-                    },
-                    "auto": {
-                        "name": "Auto-Fire",
                         "current": 0
                     },
                     "blast": {
@@ -772,6 +769,10 @@
                     }
                 },
                 "unranked_properties": {
+                    "auto": {
+                        "name": "Auto-Fire",
+                        "current": 0
+                    },
                     "cort": {
                         "name": "Cortosis",
                         "current": 1
@@ -866,8 +867,12 @@
                 "notes": {
                     "name": "Notes"
                 },
-                "severity":{"current":1},
-                "active":{"current":1}
+                "severity": {
+                    "current": 1
+                },
+                "active": {
+                    "current": 1
+                }
             },
             "_drop": "crits"
         },

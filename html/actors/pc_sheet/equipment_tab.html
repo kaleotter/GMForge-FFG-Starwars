@@ -1,22 +1,23 @@
 <div class="sheet">
-    <div class="flexcolumn greyborder-round" style="width:100%">
+    <div class="flexcolumn greyborder-round" style="max-width:100%; margin:5px">
 
         <div class="flexcolumn">
-            <p>Add new Gear</p>
-            <div class="glyphicon glyphicon-plus link">
+            
+            <div class="sheetbutton" style="width:150px">
+                    <div class="glyphicon glyphicon-plus"><label>Add new Gear</label></div>
                 <click>
                     <create type="ITEM" target="inventory" />
                 </click>
             </div>
             <div class="flexcolumn table">
                 <div class="flexrow" style="border-bottom: 1px dotted black; margin-bottom:-1px">
-                    <div class="tableheading" style="min-width: 100px">Image</div>
-                    <div class="tableheading" style="min-width: 50px">Qty</div>
-                    <div class="tableheading" style="min-width: 30px">Enc</div>
-                    <div class="tableheading" style="min-width: 150px">Name</div>
-                    <div class="tableheading" style="min-width: 300px">Summary</div>
-                    <div class="tableheading" style="min-width: 64px">Equip</div>
-                    <div class="tableheading" style="min-width:100%"></div>
+                    <div class="tableheading" style="min-width: 100px; ">Image</div>
+                    <div class="tableheading" style="min-width: 50px; ">Qty</div>
+                    <div class="tableheading" style="min-width: 30px; ">Enc</div>
+                    <div class="tableheading" style="min-width: 150px; ">Name</div>
+                    <div class="tableheading" style="min-width: 250px; ">Summary</div>
+                    <div class="tableheading" style="min-width: 64px; ">Equip</div>
+                    <div class="tableheading" style="min-width:100%; "></div>
                 </div>
                 <div class="flexcolumn columns" style="width:100%; border:1px black solid">
                     <bank target="inventory">
@@ -24,12 +25,12 @@
                             <div class="flexrow tablerow start" style="min-width:100px">
                                 <ui name='ui_image' scope-lookup="inventory.%index%.info.img" scope-fit='cover' />
                             </div>
-                            <div class="flexrow tablerow midrow" style="width:50px">
+                            <div class="flexrow tablerow midrow" style="min-width:50px">
                                 <input pattern="[0-9]" target="inventory.%index%.info.qty" style="width: 30px" />X
                             </div>
                             <div class="flexrow tablerow midrow" style="min-width:30px">eval{@%path%.info.weight}</div>
                             <div class="flexrow tablerow midrow" style="min-width: 150px">eval{'@%path%.info.name.current'}</div>
-                            <div class="flexrow tablerow midrow" style="min-width:300px">
+                            <div class="flexrow tablerow midrow" style="min-width:250px">
                                 <div cond="eval{'@%path%.info.type'=='Weapon'}">
                                     <div><b>Skill: </b>eval{@%path%.weapon.skill} ; <b>Damage:</b>Eval{@%path%.weapon.dam}
                                         ; <b>Crit:</b>
@@ -38,13 +39,13 @@
 
                                 <div cond="eval{'@%path%.info.type'=='Armor'}">
 
-                                    <div><b>soak: </b>eval{@%path%.armor.soak}; <b>Defence (M|R): </b>eval{@%path%.equip.mdef}
+                                    <div><b>soak: </b>eval{@%path%.equip.armor}; <b>Defence (M|R): </b>eval{@%path%.equip.mdef}
                                         |
                                         eval{@%path%.equip.rdef};</div>
 
                                 </div>
 
-                                <div class="description1line" cond="eval{'@%path%.info.type'=='Item'}" style="max-width:300px">
+                                <div class="description1line" cond="eval{'@%path%.info.type'=='Item'}" style="max-width:250px">
                                     traverse{inventory.%index%.info.notes.current}
 
                                 </div>
