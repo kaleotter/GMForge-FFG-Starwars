@@ -192,12 +192,13 @@ font-size:11pt
     width:80%;
 
     font-family:'abel';
+    color:darkgray;
     font-size:28px;
     text-align:center;
 
     border:none;
 
-    background-color:rgba(128,128,128,0.5)
+    background-color:rgba(128,128,128,0.0)
 }
 
 /*dual derived attributes*/
@@ -256,6 +257,21 @@ font-size:11pt
 
     background-color:rgba(255,255,255,0)
 }
+
+.deriveddbl .fixedVal 
+{
+    width: 60px;
+
+    font-family:'abel';
+    font-size:22pt;
+
+    text-align:center;
+
+    border:none;
+
+    background-color:rgba(255,255,255,0)
+}
+
 
 .deriveddbl .inputcontainer
 {

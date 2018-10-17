@@ -77,6 +77,11 @@ sync.render("COMBAT_TAB_UI", function (obj, app, scope) {
     return rendered;
 });
 
+sync.render("TALENTS_TAB_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/actors/pc_sheet/talents_tab.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
 
 
 $('body').append('<link rel="stylesheet" href="/css/css.css" type="text/css" />');

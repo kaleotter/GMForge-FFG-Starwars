@@ -379,7 +379,7 @@
 
             <div class=" flexrow tablerow" cond="eval{'@%path%.info.type'=='Armor' && @%path%.tags.equipped==1}">
                 <div class="tablerow start" style="width:150px">eval{@%path%.info.name}</div>
-                <div class="tablerow start" style="width:50px">eval{@%path%.equip.soak}</div>
+                <div class="tablerow start" style="width:50px">eval{@%path%.equip.armor}</div>
                 <div class="tablerow midrow" style="width:50px">eval{@%path%.equip.mdef}</div>
                 <div class="tablerow midrow" style="width:50px">eval{@%path%.equip.rdef}</div>
                 <div class="tablerow midrow" style="width:80px">
@@ -394,7 +394,7 @@
                             Worn
                         <click>
                             <setAttr target="info.activeArmor" value="none" />
-                            <setAttr target="info.soak.modifiers.armor" value="0"/>
+                            <setAttr target="counters.soak.modifiers.armor" value="0"/>
                             <setAttr target="counters.mdef.modifiers.armor" value="0"/>
                             <setAttr target="counters.rdef.modifiers.armor" value="0"/>
                         </click>

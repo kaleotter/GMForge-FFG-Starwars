@@ -48,9 +48,9 @@
         <div class='flexcolumn derivedsingle'>
             <div class='title'>soak value
             </div>
-            <div class="fixedVal">eval{M@counters.soak}
+            <div class="fixedVal">eval{M@c.counters.soak+R@c.counters.soak+@c.stats.br}
             </div>
-            <div class="flexrow flexmiddle lowercontainer title link" Style="color:black; text-align:center">Modifiers
+            <div class="flexrow flexmiddle lowercontainer title" Style="color:black; text-align:center; margin-bottom:5px">Modifiers&MediumSpace;
 
                 <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.soak" scope-icon="list-alt">
 
@@ -60,8 +60,8 @@
         <div class='flexcolumn deriveddbl'>
             <div class='title'>wounds</div>
             <div class='flexrow inputcontainer'>
-                <input target='counters.wounds'>
-                <input target='counters.wounds.max'>
+                <input class="link" target='counters.wounds'>
+                <input class="link" target='counters.wounds.max'>
             </div>
             <div class='flexrow lowercontainer title'>
                 <div class=' left'>current</div>
@@ -87,15 +87,15 @@
         <div class='flexcolumn deriveddbl'>
             <div class='title'>defence</div>
             <div class='flexrow inputcontainer'>
-                <input target='counters.mdef'>
-                <input target='counters.rdef'>
+                <div class="fixedVal" style="color:darkgrey"> eval{M@c.counters.mdef+ R@c.counters.mdef}</div>
+                <div class="fixedVal" style="color:darkgrey"> eval{M@c.counters.rdef+ R@c.counters.rdef}</div>
             </div>
             <div class='flexrow lowercontainer title'>
                 <div class=' left'>
-                    <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.mdef" scope-icon="list-alt">melee</ui>
+                    melee&MediumSpace; <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.mdef" scope-icon="list-alt"></ui>
                 </div>
                 <div class='right'>
-                    <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.rdef" scope-icon="list-alt">ranged</ui>
+                    ranged&MediumSpace; <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.rdef" scope-icon="list-alt"></ui>
                 </div>
 
             </div>
@@ -174,6 +174,10 @@
 
     <div main-tab="combat">
         <ui name='COMBAT_TAB_UI'></ui>
+    </div>
+
+    <div main-tab="talents">
+        <ui name="TALENTS_TAB_UI"></ui>
     </div>
 
 </div>

@@ -101,8 +101,8 @@
                     "name": "soak value",
                     "current":0
                 },
-                "mdef": {},
-                "rdef": {},
+                "mdef": {"name":"Melee Defence", "Current":0},
+                "rdef": {"Name":"Ranged Defence", "Current":0},
                 "propool": {},
                 "stimpaks": {
                     "name": "stimpaks",
@@ -851,7 +851,11 @@
                 },
                 "notes": {
                     "name": "Notes"
-                }
+                },
+                "isPassive":{"name":"Passive talent?", "current":0},
+                "isForce":{"name":"Force Talent?", "current":0},
+                "isConflict":{"name": "Conflict Talent?", "current":0},
+                "isTrait":{"name": "is trait", "current":0}
             }
         },
         "crit": {
