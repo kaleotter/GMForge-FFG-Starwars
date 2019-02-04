@@ -48,6 +48,13 @@ font-size:11pt
     text-transform:uppercase;
 }
 
+.sheet h2
+{
+    font-family:"abel";
+    font-size:14pt;
+    text-transform:uppercase;
+}
+
 /* for the charsheet top */
 
 .charinfobox
@@ -447,11 +454,16 @@ font-size:11pt
     text-align: left;
 }
 
+
+
 .skilltab .skillrow
 {
     /* height: 23px; */
     border-bottom:1px dotted black;
 }
+
+.skillrow p
+{font-size: 10pt}
 
 .skillrow .skillname
 {
@@ -460,6 +472,21 @@ font-size:11pt
     padding-left:2px;
     padding-top:2px;
 
+}
+ .skillname .selectchara
+{
+    width:100%;
+    
+    margin:0px;
+    padding:0px;
+    border:none
+
+}
+
+.skillrow .skillname select
+{
+    float:right;
+    width:40px
 }
 
 .skillrow .careerbox

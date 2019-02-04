@@ -1,0 +1,213 @@
+
+<div class="tableheading">Combat Skills</div>
+
+<div class="tableheading flexrow ">
+    <div class="namecol flexmiddle">
+        Skill Name
+</div>
+    
+    <div class="tableheading careercol flexmiddle">
+        Career
+    </div>
+    
+    <div class="tableheading rankscol flexmiddle">
+        Ranks
+    </div>
+    
+</div>
+
+<div class="skilltable">
+    <bank class="flex scroll-y" scroll-save="skill-scroll" target="skills.general" connect='skillSort'>
+        <div class="flexrow skillrow">
+            <div class='skillname'>
+                <p>eval{@%path%.name}
+                    <select class='' target='skills.general.%index%.stat'>
+                        <option value='1'>Br</option>
+                        <option value='2'>Ag</option>
+                        <option value='3'>Int</option>
+                        <option value='4'>Cun</option>
+                        <option value='5'>Will</option>
+                        <option value='6'>Pr</option>
+
+                    </select></p>
+            </div>
+            <div class='careerbox'>
+                <input type='checkbox' target='%path%.career' check='1' uncheck='0' isChecked='eval{@%path%.career==1}' />
+
+            </div>
+
+            <div>
+                <input type='checkbox' target='%path%' check='1' uncheck='0' isChecked='eval{@c.%path%>0}' />
+                <input type='checkbox' target='%path%' check='2' uncheck='1' isChecked='eval{@c.%path%>1}' />                            
+                <input type='checkbox' target='%path%' check='3' uncheck='2' isChecked='eval{@c.%path%>2}' />                            
+                <input type='checkbox' target='%path%' check='4' uncheck='3' isChecked='eval{@c.%path%>3}' />                            
+                <input type='checkbox' target='%path%' check='5' uncheck='4' isChecked='eval{@c.%path%>4}' />                                                        
+            </div>
+            <div>
+
+                <div class='flexmiddle sheetbutton' style='height:28px; width:50px;'>
+
+                    <div class="flexrow" cond='eval{((@%path%.stat==1)?(@c.stats.br.current):((@%path%.stat==2)?(@c.stats.ag.current):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre))))))>=@c.%path%.current}'>
+                        <!-- if you have higher characteristics than skills, then you have ability dice = characteristic-skill ranks and proficiency = skill ranks -->         
+
+                        <!-- the proficiency dice -->
+
+                        <div class="flexrow flexmiddle prodie">
+                            eval{@c.%path%}
+                        </div>
+
+                        <!-- the ability dice -->
+                        <div class="flexrow flexmiddle abdie">
+                            eval{((@%path%.stat==1)?(@c.stats.br):((@%path%.stat==2)?(@c.stats.ag):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre))))))-@c.%path%.current}
+                        </div>
+
+                        <click>
+                            <var pool1='@c.%path%' pool2='((@%path%.stat==1)?(@c.stats.br):((@%path%.stat==2)?(@c.stats.ag):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre))))))-@c.%path%.current'></var>    
+                            <prompt hieght="auto" width="auto">
+                                <div class="flexcolumn roller ">
+                                    <p>Task Pool</p>
+                                    <div class="flexrow" style=''>
+
+                                        <userinput class='prodieinput flexmiddle' type='text' value='eval{@pool1}' varname='prodice'/>
+                                        <userinput class='abdieinput flexmiddle' type='text' value='eval{@pool2}' varname='abdice'/>
+                                        <userinput class='boostinput flexmiddle' type='text' value='0' varname='boostdice'/>
+
+
+                                    </div>
+
+                                    <!--<div class='flexrow' style='border-bottom: 2px black solid; border-top:1px black solid'>
+
+                                        <div class='flexcolumn flexmiddle' style='width:58px; border-right:1px black solid'>
+
+                                            <div class='eotedice' style='font-size:20pt; margin:4px'>
+                                                x
+                                            </div>
+                                            <div class='flexmiddle' style='width: 50px;'>
+                                                <userinput class='' type='text' value='0' varname='xtraTri' style="width:40px"/>
+                                            </div>
+                                        </div>
+
+                                        <div class='flexcolumn flexmiddle' style='width:58px; border-right:1px black solid;'>
+
+                                            <div class='eotedice' style='font-size:20pt; margin:4px'>
+                                                s
+                                            </div>
+                                            <div class='flexmiddle' style='width:58px; margin:4px'>
+                                                <userinput class='' type='text' value='0' varname='xtraSuc' style='width:40px;'/>
+                                            </div>
+
+                                        </div>
+
+                                        <div class='flexcolumn flexmiddle' style='max-width:50px'>
+
+                                            <div class='flexmiddle eotedice' style='font-size:20pt;  margin:4px'>
+                                                a
+                                            </div>
+                                            <div class='flexmiddle' style='max-width: 50px'>
+                                                <userinput class='' type='text' value='0' varname='xtraAd' style='width:40px;'/>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>-->
+
+
+                                    <p>Task Difficulty</p>
+                                    <div class='flexrow'>
+
+                                        <userinput class='challengeinput flexmiddle' type='text' value='0' varname='chaldice'/>
+                                        <userinput class='diinput flexmiddle' type='text' value='2' varname='didice'/>
+                                        <userinput class='sbinput flexmiddle' type='text' value='0' varname='sbdice'/>
+
+                                    </div>
+                                </div>
+                            </prompt>
+                            <chat roll='@prodice[proficiency]+@abdice[ability]+@boostdice[boost]+@chaldice[challenge]+@didice[difficulty]+@sbdice[setback]' flavor="eval{@name's @%path%.name test}" roll-ui='ui_poolResults'/>
+                        </click>
+                    </div>
+
+                    <div class="flexrow" cond='eval{((@%path%.stat==1)?(@c.stats.br.current):((@%path%.stat==2)?(@c.stats.ag.current):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre))))))<@c.%path%.current}'>
+
+                        <div class="flexrow flexmiddle prodie">
+                            eval{(@%path%.stat==1)?(@c.stats.br):((@%path%.stat==2)?(@c.stats.ag):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre)))))}
+                        </div>
+
+                        <!-- the ability dice -->
+                        <div class="flexrow flexmiddle abdie">
+                            eval{@c.%path%-((@%path%.stat==1)?(@c.stats.br):((@%path%.stat==2)?(@c.stats.ag):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre))))))}
+                        </div>
+
+                        <click>
+                            <var pool1='(@%path%.stat==1)?(@c.stats.br):((@%path%.stat==2)?(@c.stats.ag):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre)))))' 
+                                 pool2='@c.%path%-((@%path%.stat==1)?(@c.stats.br):((@%path%.stat==2)?(@c.stats.ag):((@%path%.stat==3)?(@c.stats.int):((@%path%.stat==4)?(@c.stats.cun):((@%path%.stat==5)?(@c.stats.wp):(@c.stats.pre))))))'></var>    
+
+                            <prompt hieght="auto" width="auto">
+                                <div class="flexcolumn roller ">
+                                    <p>Task Pool</p>
+                                    <div class="flexrow" style=''>
+
+                                        <userinput class='prodieinput flexmiddle' type='text' value='eval{@pool1}' varname='prodice'/>
+                                        <userinput class='abdieinput flexmiddle' type='text' value='eval{@pool2}' varname='abdice'/>
+                                        <userinput class='boostinput flexmiddle' type='text' value='0' varname='boostdice'/>
+
+
+                                    </div>
+
+                                    <!--<div class='flexrow' style='border-bottom: 2px black solid; border-top:1px black solid'>
+
+                                        <div class='flexcolumn flexmiddle' style='width:58px; border-right:1px black solid'>
+
+                                            <div class='eotedice' style='font-size:20pt; margin:4px'>
+                                                x
+                                            </div>
+                                            <div class='flexmiddle' style='width: 50px;'>
+                                                <userinput class='' type='text' value='0' varname='xtraTri' style="width:40px"/>
+                                            </div>
+                                        </div>
+
+                                        <div class='flexcolumn flexmiddle' style='width:58px; border-right:1px black solid;'>
+
+                                            <div class='eotedice' style='font-size:20pt; margin:4px'>
+                                                s
+                                            </div>
+                                            <div class='flexmiddle' style='width:58px; margin:4px'>
+                                                <userinput class='' type='text' value='0' varname='xtraSuc' style='width:40px;'/>
+                                            </div>
+
+                                        </div>
+
+                                        <div class='flexcolumn flexmiddle' style='max-width:50px'>
+
+                                            <div class='flexmiddle eotedice' style='font-size:20pt;  margin:4px'>
+                                                a
+                                            </div>
+                                            <div class='flexmiddle' style='max-width: 50px'>
+                                                <userinput class='' type='text' value='0' varname='xtraAd' style='width:40px;'/>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>-->
+
+
+                                    <p>Task Difficulty</p>
+                                    <div class='flexrow'>
+
+                                        <userinput class='challengeinput flexmiddle' type='text' value='0' varname='chaldice'/>
+                                        <userinput class='diinput flexmiddle' type='text' value='2' varname='didice'/>
+                                        <userinput class='sbinput flexmiddle' type='text' value='0' varname='sbdice'/>
+
+                                    </div>
+                                </div>
+                            </prompt>
+                            <chat roll='@prodice[proficiency]+@abdice[ability]+@boostdice[boost]+@chaldice[challenge]+@didice[difficulty]+@sbdice[setback]' flavor="eval{@name's @%path%.name test}" roll-ui='ui_poolResults'/>
+                        </click>
+
+                    </div>
+                </div>
+            </div>
+    </bank>
+</div>
+</div>

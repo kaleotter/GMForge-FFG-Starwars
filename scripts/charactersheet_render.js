@@ -83,5 +83,22 @@ sync.render("TALENTS_TAB_UI", function (obj, app, scope) {
     return rendered;
 });
 
+sync.render("BIO_TAB_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/actors/pc_sheet/biotab.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
+
+sync.render("TALENT_CARD_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/elements/talent_card/talent_card.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
+
+sync.render("SKILL_CARD_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/elements/skill_card.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
 
 $('body').append('<link rel="stylesheet" href="/css/css.css" type="text/css" />');

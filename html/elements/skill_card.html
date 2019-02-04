@@ -1,0 +1,21 @@
+<div class="sheet">
+    <div class="greyborder-round" style="text-align:left">
+
+        <p><label>Skill Short Name (4 chars): &nbsp;</label><input type="text" target="info.name" maxlength="4"></p>
+        <p><label>Skill Name: &nbsp;</label><input type=text target="info.longname"></p>
+            <p><label>Characteristic: &nbsp;</label><select target="info.chara">
+            <option value=0>Br</option>    
+            <option value=1>Ag</option>
+            <option value=2>Int</option>
+            <option value=3>Cun</option>
+            <option value=4>Wil</option>
+            <option value=5></option>
+            
+            </select>
+            </p>
+            <p><label>Career: &nbsp;</label><input type="checkbox" target="info.career" check='1' uncheck='0' isChecked='@info.career==1'></p>
+        <p><label>Ranks: &nbsp;</label><input type="text" target="info.ranks"></p>
+        <p><label>Description:</label></p>
+        <ui name=ui_rawNotes class="white smooth" style="height:100px; width:100%" />
+    </div>
+</div>

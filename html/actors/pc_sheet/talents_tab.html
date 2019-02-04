@@ -1,20 +1,43 @@
-<div class="flexcolumn greyborder-round pcsheet">
+<div class="flexcolumn greyborder-round pcsheet" style="max-height:800px">
     <div class="sheetbutton glyphicon glyphicon-plus">Add new Talent
         <click>
-
+            <create type="TALENT" target="talents"></create>
         </click>
     </div>
-    <div class="flexcolumn table">
+    <div class="flexcolumn table scroll-y">
         <div class="flexrow">
-            <div>Talent Name</div>
-            <div>Book/Page</div>
-            <div>Description</div>
+            <div style="width:25%">Talent Name</div>
+            <div style="width:15%">Book/Page</div>
+            <div style="width:50%">Description</div>
             <div></div>
         </div>
         <bank target="talents">
-<div class="tablerow flexrow">
-    <div class="start">eval{@%path%.name}</div>
-</div>
+            <div class="tablerow flexrow" style="height:75px; padding:0px">
+                <div class="start" style="width:25%; text-align:left; vertical-align:50%">
+                    <div>eval{@%path%.info.name.current} eval{
+                        (@%path%.info.ranked.current==1)?(@%path%.info.ranks.current):("") }</div>
+                </div>
+
+                <div class=" midrow" style="width:15%">
+                    eval{@%path%.info.page.current}
+                </div>
+
+                <div class=" midrow" style="width:50%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">
+                    eval{@%path%.info.notes.current}
+                </div>
+
+                <div class="flexrow end" style="width:10%;">
+                    <div class="glyphicon glyphicon-edit link" style="margin-right:3px">
+                        <click>
+                            <change target="talents.%index%" />
+                        </click>
+                    </div>
+                    <div class="glyphicon glyphicon-trash link">
+                        <click>
+                            <delete target="talents.%index%" />
+                        </click>
+                    </div>
+                </div>
         </bank>
     </div>
 
