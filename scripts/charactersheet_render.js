@@ -101,4 +101,22 @@ sync.render("SKILL_CARD_UI", function (obj, app, scope) {
     return rendered;
 });
 
+sync.render("POWERS_TAB_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/actors/powers_tab.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
+
+sync.render("POWERS_TAB_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/actors/pc_sheet/powers_tab.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
+
+sync.render("POWERS_CARD_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/elements/powers_card.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
+
 $('body').append('<link rel="stylesheet" href="/css/css.css" type="text/css" />');
