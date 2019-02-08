@@ -8,14 +8,14 @@
 <div class="skilltable">
     <bank target="custskill">
         <div class="flexrow skillrow" cond="">
-            <div class="skillname flexrow">
-                <div>
+            <div class="skillname flexrow" style="width:60%">
+                <div style="width:80%">
                     <p>eval{@%path%.info.longname}</p>
                 </div>
 
-                <div class="skillname selectchara">
+                <div class="skillname selectchara" style="width:20%; position:relative;">
 
-                    <select class='' target='custskill.%index%.info.chara'>
+                    <select class='' target='custskill.%index%.info.chara' style="position:absolute; right:5%">
                         <option value='0'>Br</option>
                         <option value='1'>Ag</option>
                         <option value="2">Int</option>
@@ -34,7 +34,7 @@
                 <input type='checkbox' target='%path%.info.career' check='1' uncheck='0' isChecked='eval{@%path%.info.career==1}' />
             </div>
 
-            <div style="width:50%">
+            <div style="width:40%">
                 <input type='checkbox' target='custskill.%index%.info.ranks' check='1' uncheck='0' isChecked='eval{@c.custskill.%index%.info.ranks>0}' />
                 <input type='checkbox' target='custskill.%index%.info.ranks' check='2' uncheck='1' isChecked='eval{@c.custskill.%index%.info.ranks>1}' />
                 <input type='checkbox' target='custskill.%index%.info.ranks' check='3' uncheck='2' isChecked='eval{@c.custskill.%index%.info.ranks>2}' />
@@ -42,7 +42,7 @@
                 <input type='checkbox' target='custskill.%index%.info.ranks' check='5' uncheck='4' isChecked='eval{@c.custskill.%index%.info.ranks>4}' />
             </div>
 
-            <div>
+            <div class="flexrow">
                 <div class="flexmiddle sheetbutton" style="float:right">ROLL
                     <click>
                         <var pool1='@c.custskill.%index%.info.ranks' pool2='((@%path%.info.chara==0)?(@c.stats.br):((@%path%.info.chara==1)?(@c.stats.ag):((@%path%.info.chara==2)?(@c.stats.int):((@custskill.%index%.info.chara==3)?(@c.stats.cun):((@custskill.%index%.info.chara==4)?(@c.stats.wp):(@c.stats.pre))))))'></var>

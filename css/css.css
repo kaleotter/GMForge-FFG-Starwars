@@ -977,3 +977,24 @@ transform: translateX(18px)}
     border: 1px black solid;
     height: 60px;
 }
+
+
+/* Vehicle sheet specific Styles */
+
+.shieldcontainer
+{
+    position:relative;
+    background-image:url(/images/svg/shield\ disk.svg);
+    background-size:100%,100%;
+    z-index:0;
+}
+
+.shieldrtgcontainer
+{
+    position:absolute;
+    height:40px;
+    width:40px;
+    border:1px black solid;
+    background-color: white;
+    z-index:1;
+}

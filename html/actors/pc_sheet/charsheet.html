@@ -92,10 +92,12 @@
             </div>
             <div class='flexrow lowercontainer title'>
                 <div class=' left'>
-                    melee&MediumSpace; <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.mdef" scope-icon="list-alt"></ui>
+                    melee&MediumSpace; <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.mdef"
+                        scope-icon="list-alt"></ui>
                 </div>
                 <div class='right'>
-                    ranged&MediumSpace; <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.rdef" scope-icon="list-alt"></ui>
+                    ranged&MediumSpace; <ui name="ui_link" scope-click="ui_modifiers" scope-lookup="counters.rdef"
+                        scope-icon="list-alt"></ui>
                 </div>
 
             </div>
@@ -146,26 +148,37 @@
     <tabs class="flexrow flexaround fit-x size4" tab-category='main-tab' tab-selected="alttext flexmiddle lrpadding smooth"
         tab-selected-style="height: 40px; width:100px; background-image:url(images/svg/tabbg-s.svg); font-family:'abel'; font-size:12pt; text-transform:uppercase "
         ;'>
-        <tab class='flexmiddle link lrpadding cstab'>skills</tab>
+        <tab class='flexmiddle link lrpadding cstab' primary="true">skills</tab>
         <tab class='flexmiddle link lrpadding cstab'>combat</tab>
         <tab class='flexmiddle link lrpadding cstab'>talents</tab>
-        <tab class='flexmiddle link lrpadding cstab' primary="true">equipment</tab>
+        <tab class='flexmiddle link lrpadding cstab' >equipment</tab>
         <tab class='flexmiddle link lrpadding cstab'>powers</tab>
         <tab class='flexmiddle link lrpadding cstab'>bio</tab>
     </tabs>
 
-    <div main-tab='skills' class='flexrow skilltab'>
-        <div class='flexcolumn leftcol'>
-            <ui name="SKILLS_GENERAL_UI" />
+    <div main-tab='skills' class='flexcolumn skilltab'>
+
+        <div class=flexrow>
+            <div class='flexcolumn leftcol'>
+                <ui name="SKILLS_GENERAL_UI" />
+            </div>
+
+            <div class='flexcolumn rightcol'>
+                <ui name="SKILLS_COMBAT_UI" />
+                <ui name="SKILLS_KNOW_UI" />
+                <ui name="SKILLS_CUST_UI" />
+            </div>
         </div>
+        <div class="flexrow flexaround derivedbg " style="width:100%">
 
-        <div class='flexcolumn rightcol'>
-            <ui name="SKILLS_COMBAT_UI" />
-            <ui name="SKILLS_KNOW_UI" />
-            <ui name="SKILLS_CUST_UI" />
+            <div class="flexcolumn derivedsingle">
+
+            </div>
+            <div class="flexcolumn derivedsingle">
+
+            </div>
+
         </div>
-
-
     </div>
 
     <div main-tab="equipment">
