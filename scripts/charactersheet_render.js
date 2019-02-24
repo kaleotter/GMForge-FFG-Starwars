@@ -126,4 +126,11 @@ sync.render("VEHICLE_SHEET_MAIN_UI", function (obj, app, scope) {
     return rendered;
 });
 
+sync.render("MINION_SHEET_MAIN_UI", function (obj, app, scope) {
+    let html = loadTemplate("html/actors/minion_sheet/main.html");
+    let rendered = sync.render("ui_processUI")(obj, app, {display: html});
+    return rendered;
+});
+
+
 $('body').append('<link rel="stylesheet" href="/css/css.css" type="text/css" />');
