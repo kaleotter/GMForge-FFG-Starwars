@@ -127,7 +127,7 @@ sync.render("VEHICLE_SHEET_MAIN_UI", function (obj, app, scope) {
 });
 
 sync.render("MINION_SHEET_MAIN_UI", function (obj, app, scope) {
-    let html = loadTemplate("html/actors/minion_sheet/main.html");
+    let html = loadTemplate("html/actors/minion_sheet/sheetmain.html");
     let rendered = sync.render("ui_processUI")(obj, app, {display: html});
     return rendered;
 });
